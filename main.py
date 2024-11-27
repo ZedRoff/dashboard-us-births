@@ -7,7 +7,6 @@ import plotly.graph_objects as go
 import plotly.express as px
 #from deep_translator import GoogleTranslator
 
-
 # Initialisation de l'application
 app = dash.Dash(__name__)
 app.title = "Dashboard Global Country Information"
