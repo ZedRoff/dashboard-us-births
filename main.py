@@ -13,7 +13,7 @@ app.title = "Dashboard Students Performance Factors"
 # Charger le fichier StudentFactors.csv
 df = pd.read_csv('StudentPerformanceFactors.csv')
 
-# Calculer la ligne de tendance (Ordinary Least Squares - OLS)
+# Calculer la ligne de tendance (Ordinary Least Squares - OLS)  
 coeffs = np.polyfit(df['Hours_Studied'], df['Exam_Score'], 1)  # Régression linéaire
 trendline = np.poly1d(coeffs)  # Fonction de la droite
 
@@ -63,8 +63,8 @@ app.layout = html.Div([
     )
 ])
 
-#if __name__ == "__main__":
- #   app.run_server(debug=True)
+if __name__ == "__main__":
+    app.run_server(debug=True)
  
 # Regroupement des données en fonction de chaque variable pour le boxplot
 x_data = ['Gender', 'School_Type', 'Parental_Education_Level']
@@ -118,5 +118,4 @@ fig.update_layout(
 )
 
 # Afficher le graphique
-fig.show()
-
+#fig.show()
