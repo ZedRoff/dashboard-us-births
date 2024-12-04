@@ -1,0 +1,78 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    overflow-y:hidden;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    height:100vh;
+}
+header {
+    background: #2980b9;
+    padding:20px;
+    color: white;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+}
+main {
+    display : flex;
+    height: 100%;
+    align-items: stretch;
+}
+.content {
+    flex:1;
+    overflow-y: scroll;
+    height: 100vh;   
+    color : white;
+    display: flex;
+    align-items : center;
+    justify-content : center;
+    background:purple;
+}
+iframe {
+   
+    border: none;
+background:red;
+   width: 100vw;
+   position:fixed;
+   z-index:999;
+}
+
+#iframe-container {
+   
+  background:red;
+   
+}
+
+aside{
+    background : #343131;
+    width : 80px;
+    height : calc(100vh - 50px);
+    position : fixed;
+}
+.Nav {
+    color : #ced9d9;
+    display: flex;
+    flex-direction: column; /* Disposition verticale */
+    gap: 80px; /* Espacement uniforme */
+    align-items: center;
+    font-size:40px;
+    justify-content : center;
+}
+#bouton {
+    cursor : pointer;
+    font-size: 20px;
+    padding: 8px;
+    color : #343131;
+    background: #2980b9;
+    outline:0;
+    border:0;
+    border-radius: 10px;
+    border:2px solid #343131;
+}

@@ -5,4 +5,10 @@ dash-table==5.0.0
 numpy==2.0.2
 pandas==2.2.3
 plotly==5.24.1
+<<<<<<< HEAD
 deep-translator==1.11.4
+=======
+folium==0.17.0
+deep-translator==1.11.4
+urllib3==1.26.20
+>>>>>>> 93467ae (feat: homepage and map system)
