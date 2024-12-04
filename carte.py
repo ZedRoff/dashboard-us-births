@@ -13,10 +13,10 @@ def generate_map():
 
     map = folium.Map(location=coords, tiles=tiles, attr=attribution, zoom_start=2, no_wrap=True,min_zoom=2, zoom_control=False)
 
-    # Créer un MarkerCluster
+# Créer un MarkerCluster
     marker_cluster = MarkerCluster().add_to(map)
 
-    # Définir les bornes de la carte pour empêcher le déplacement hors de ces bornes
+# Définir les bornes de la carte pour empêcher le déplacement hors de ces bornes
     map.options['maxBounds'] = [[-85, -180], [85, 180]]  # Empêcher le déplacement au-delà des limites géographiques
     map.options['maxBoundsViscosity'] = 1.0  # Rendre la contrainte des bornes géographiques stricte
 
@@ -27,12 +27,15 @@ def generate_map():
         name = df.values[i][0]
         x = df.values[i][33]
         y = df.values[i][34]
+        area = df["Land Area(Km2)"][i]
         coords=[x,y]
         icone = folium.Icon(color="blue", icon="globe")
-        folium.Marker(location=coords, popup=name ,tooltip = name, icon=icone).add_to(marker_cluster)
- 
+        popup = f"{name} {area}km²"
+        folium.Marker(location=coords, popup=popup,tooltip = name, icon=icone).add_to(marker_cluster)
 
-        
+
+    
     map.save(outfile='map.html')
 
-
+if __name__ == "__main__":
+    generate_map()
