@@ -5,3 +5,4 @@ dash-table==5.0.0
 numpy==2.0.2
 pandas==2.2.3
 plotly==5.24.1
+deep-translator==1.11.4
