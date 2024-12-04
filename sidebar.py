@@ -6,6 +6,7 @@ import demography
 import dash_bootstrap_components as dbc
 
 
+import plotly.graph_objects as go
 # Initialiser l'application Dash
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
@@ -40,20 +41,12 @@ app.layout = html.Div([
 
             # Content area
             html.Div([
-              html.Div(id="content"),
-              dcc.Graph(id="demography")
+             
 
-            ],className="content")
+            ],className="content", id="content")
         ],)
     ], className="test2")
 ],)
-@app.callback(
-        Output("demography", "figure"),
-        Input("one", "n_clicks"),
-        prevent_initial_call=True
-)
-def test(one_clicks):
-    return demography.run()
 
 # Callback for the content div
 @app.callback(
@@ -64,7 +57,7 @@ def test(one_clicks):
 def update_content(one_clicks):
     global country_selected
     country_selected = "Senegal"
-    return html.P("COUCOUU")
+    return [dcc.Graph(id="demography", figure=demography.run()), dcc.Graph(id="demography", figure=demography.run()), dcc.Graph(id="demography", figure=demography.run())]
 
 
 # Callback pour gérer le clic sur le bouton

@@ -29,13 +29,17 @@ main {
 .content {
     flex:1;
     overflow-y: scroll;
-    height: 100vh;   
     color : white;
     display: flex;
-    align-items : center;
-    justify-content : center;
     background:purple;
+    justify-content: space-evenly;
+    align-items:center;
+    flex-flow: row wrap;
+    gap: 25px;
+    padding: 25px;
 }
+
+
 iframe {
    
    border: none;
