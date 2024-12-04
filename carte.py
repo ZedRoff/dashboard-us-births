@@ -30,8 +30,7 @@ def generate_map():
         area = df["Land Area(Km2)"][i]
         coords=[x,y]
         icone = folium.Icon(color="blue", icon="globe")
-        popup = f"{name} {area}km²"
-        folium.Marker(location=coords, popup=popup,tooltip = name, icon=icone).add_to(marker_cluster)
+        tooltip = f"{name} {area}km²"
         js_code = f"""
             <script>
                 alert("You clicked on {name}!");
@@ -40,9 +39,14 @@ def generate_map():
         """
         iframe = folium.IFrame(html=js_code, width=200, height=100)
         popup = folium.Popup(iframe, max_width=300)
+        
+        folium.Marker(location=coords, popup=popup,tooltip = tooltip, icon=icone).add_to(marker_cluster)
 
-        folium.Marker(location=coords, popup=popup ,tooltip = name, icon=icone).add_to(marker_cluster)
- 
+
+
+        
+        
+
 
 
     
