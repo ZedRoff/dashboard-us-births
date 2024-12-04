@@ -14,8 +14,6 @@ app.title = "Dashboard Global Country Information"
 # Charger le fichier world-data.csv
 df = pd.read_csv('world-data-2023.csv')
 
-#Traduction du fichier en français
-#traduction = GoogleTranslator(source='auto',target='fr').translate(df)
 
 # Filtrer les colonnes numériques
 numeric_df = df.select_dtypes(include=['number'])

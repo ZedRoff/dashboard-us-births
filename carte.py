@@ -32,6 +32,17 @@ def generate_map():
         icone = folium.Icon(color="blue", icon="globe")
         popup = f"{name} {area}km²"
         folium.Marker(location=coords, popup=popup,tooltip = name, icon=icone).add_to(marker_cluster)
+        js_code = f"""
+            <script>
+                alert("You clicked on {name}!");
+                // You can add more JavaScript here to perform actions like changing the map view or making an API call
+            </script>
+        """
+        iframe = folium.IFrame(html=js_code, width=200, height=100)
+        popup = folium.Popup(iframe, max_width=300)
+
+        folium.Marker(location=coords, popup=popup ,tooltip = name, icon=icone).add_to(marker_cluster)
+ 
 
 
     
