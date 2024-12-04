@@ -1,91 +1,72 @@
 import dash
 from dash import dcc, html
-from dash.dependencies import Input, Output
 import pandas as pd
-import plotly.graph_objects as go
+import plotly.express as px
+import dash_bootstrap_components as dbc
 
-# Charger les données depuis le CSV
-# Remplacez 'votre_fichier.csv' par le chemin réel vers votre fichier CSV
-df = pd.read_csv("world-data-2023.csv")
+def run():
 
-# Initialiser l'application Dash
-app = dash.Dash(__name__)
+    # Charger les données depuis le CSV
+    df = pd.read_csv("world-data-2023.csv")
 
-# Définir la mise en page de l'application
-app.layout = html.Div([
-    html.H1("Population Totale et Densité par Pays", style={'textAlign': 'center'}),
-    
-    # Dropdown pour choisir un sous-ensemble de pays
-    html.Div([
-        html.Label("Choisissez des pays :"),
-        dcc.Dropdown(
-            id='country-dropdown',
-            options=[{'label': country, 'value': country} for country in df['Country']],
-            value=df['Country'][:5],  # Sélectionne les 5 premiers pays par défaut
-            multi=True
-        )
-    ], style={'width': '70%', 'margin': 'auto'}),
-    
-    # Graphique interactif
-    html.Div([
-        dcc.Graph(id='population-density-chart')
-    ])
-])
+    # Nettoyage des données : convertir les taux de fécondité en numérique
+    df['Fertility Rate'] = pd.to_numeric(df['Fertility Rate'], errors='coerce')
 
-# Callback pour mettre à jour le graphique
-@app.callback(
-    Output('population-density-chart', 'figure'),
-    [Input('country-dropdown', 'value')]
-)
-def update_chart(selected_countries):
-    # Filtrer les données pour les pays sélectionnés
-    filtered_df = df[df['Country'].isin(selected_countries)]
-    
-    # Créer le graphique
-    fig = go.Figure()
+    # Supprimer les lignes avec des valeurs manquantes dans le taux de fécondité
+    df = df.dropna(subset=['Fertility Rate'])
 
-    # Ajouter les barres pour la population totale
-    fig.add_trace(go.Bar(
-        x=filtered_df['Country'],
-        y=filtered_df['Population'],
-        name='Population Totale',
-        marker_color='blue',
-        yaxis='y1'
-    ))
+    # Initialiser l'application Dash
+    app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-    # Ajouter les points pour la densité
-    fig.add_trace(go.Scatter(
-        x=filtered_df['Country'],
-        y=filtered_df['Density (P/Km2)'],
-        mode='markers+lines',
-        name='Densité (P/Km²)',
-        marker=dict(color='red', size=10),
-        yaxis='y2'
-    ))
-
-    # Ajouter les axes secondaires
-    fig.update_layout(
-        title="Comparaison de la Population Totale et de la Densité par Pays",
-        xaxis=dict(title="Pays"),
-        yaxis=dict(
-            title="Population Totale",
-            titlefont=dict(color="blue"),
-            tickfont=dict(color="blue")
-        ),
-        yaxis2=dict(
-            title="Densité (P/Km²)",
-            titlefont=dict(color="red"),
-            tickfont=dict(color="red"),
-            overlaying='y',
-            side='right'
-        ),
-        legend=dict(x=0.1, y=1.1),
-        barmode='group',
-        template='plotly'
+    # Créer l'histogramme pour la distribution des taux de fécondité avec personnalisation
+    fig = px.histogram(
+    df,
+    x='Fertility Rate',  # Taux de fécondité sur l'axe X
+    nbins=20,            # Nombre de bins pour l'histogramme
+    title="Distribution des Taux de Fécondité dans le Monde",
+    labels={"Fertility Rate": "Taux de Fécondité"},
+    template="plotly",  # Template classique clair
     )
 
-    return fig
+    # Styliser l'histogramme
+    fig.update_traces(marker=dict(color='royalblue', line=dict(color='black', width=1)))
 
-# Lancer le serveur
-if __name__ == '__main__':
-    app.run_server(debug=True)
+    # Personnaliser le titre et les axes
+    fig.update_layout(
+    title={
+        'text': "Histogramme des Taux de Fécondité par Pays",
+        'x': 0.5,  # Centrer le titre
+        'xanchor': 'center',
+        'font': {'size': 24, 'family': 'Arial', 'color': 'black'}
+    },
+    xaxis=dict(
+        title="Taux de Fécondité",
+        title_font={'size': 18, 'color': 'black'},
+        tickfont={'size': 14, 'color': 'black'},
+        gridcolor='lightgray',  # Gris clair pour les lignes de la grille
+    ),
+    yaxis=dict(
+        title="Number of Countries",
+        title_font={'size': 18, 'color': 'black'},
+        tickfont={'size': 14, 'color': 'black'},
+        gridcolor='lightgray',  # Gris clair pour les lignes de la grille
+    ),
+    plot_bgcolor='white',  # Fond du graphique en blanc
+    paper_bgcolor='white',  # Fond extérieur du graphique
+    showlegend=False,  # Désactiver la légende (pas nécessaire ici)
+    margin=dict(t=40, b=40, l=50, r=50)  # Marges autour du graphique
+    )
+
+    # Définir la mise en page de l'application
+    app.layout = html.Div([
+    html.H1("Distribution des Taux de Fécondité dans le Monde", style={'textAlign': 'center', 'color': 'black'}),
+
+    # Graphique interactif
+    html.Div([
+        dcc.Graph(
+            id='fertility-rate-histogram',
+            figure=fig
+        )
+    ])
+    ])
+    return fig

@@ -3,9 +3,11 @@ from dash import dcc, html, Input, Output, ctx
 import carte 
 import os
 import demography
+import dash_bootstrap_components as dbc
+
 
 # Initialiser l'application Dash
-app = dash.Dash(__name__)
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 country_selected = "France"
 

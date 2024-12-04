@@ -1,5 +1,6 @@
 import pandas as pd
 import plotly.graph_objects as go
+
 def run():
     # Charger le fichier CSV (remplace "world-data-2023.csv" par le chemin exact)
     df = pd.read_csv("world-data-2023.csv")
@@ -49,5 +50,4 @@ def run():
         template="plotly_white"
         )
 
-    # Afficher le graphique
         return fig
