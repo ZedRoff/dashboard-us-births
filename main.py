@@ -1,20 +1,13 @@
 import dash
-from dash import html, Input, Output, ctx, callback_context
-import utils.carte as carte 
-import os
+from dash import html
+
 import dash_bootstrap_components as dbc
 import utils.getStats as getStats
 
-import views.demography as demography
-import views.economy as economy
-import views.environment as environment
-import views.education as education
-import views.language as language
+
 
 from components.navbar import create_navbar
 from components.sidebar import create_sidebar
-
-import plotly.graph_objects as go
 
 from callbacks import register_callbacks
 # Initialiser l'application Dash

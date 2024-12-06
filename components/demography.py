@@ -1,4 +1,4 @@
-import pandas as pd
+
 import plotly.graph_objects as go
 import utils.helpers as helpers
 def create_graph():

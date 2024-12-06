@@ -1,4 +1,4 @@
-import pandas as pd
+
 import utils.helpers as helpers
 def count_countries_by_language(language):
     # Utilisation de query pour filtrer les pays dont la langue est mentionnée
