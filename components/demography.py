@@ -1,9 +1,9 @@
 import pandas as pd
 import plotly.graph_objects as go
-
-def run():
+import utils.helpers as helpers
+def create_graph():
     # Charger le fichier CSV (remplace "world-data-2023.csv" par le chemin exact)
-    df = pd.read_csv("world-data-2023.csv")
+    df = helpers.load_data()
 
     # Nom du pays à analyser
     pays_sélectionné = 'France'  # Remplacez par le nom du pays souhaité

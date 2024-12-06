@@ -1,7 +1,6 @@
 import folium
-import pandas as pd
 from folium.plugins import MarkerCluster
-
+import utils.helpers as helpers
 
 def generate_map():
 
@@ -21,7 +20,7 @@ def generate_map():
     map.options['maxBoundsViscosity'] = 1.0  # Rendre la contrainte des bornes géographiques stricte
 
 
-    df = pd.read_csv('world-data-2023.csv')
+    df = helpers.load_data()
 
     for i in range(len(df)):
         name = df.values[i][0]
@@ -41,16 +40,5 @@ def generate_map():
         popup = folium.Popup(iframe, max_width=300)
         
         folium.Marker(location=coords, popup=popup,tooltip = tooltip, icon=icone).add_to(marker_cluster)
-
-
-
-        
-        
-
-
-
-    
     map.save(outfile='map.html')
 
-if __name__ == "__main__":
-    generate_map()

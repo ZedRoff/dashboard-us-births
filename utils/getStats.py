@@ -1,6 +1,7 @@
 import pandas as pd
+import utils.helpers as helpers
 def run():
-    df = pd.read_csv('world-data-2023.csv')
+    df = helpers.load_data()
     numeric_df = df.select_dtypes(include=['number'])
     statistics = pd.DataFrame({
     'Variable': numeric_df.columns,
