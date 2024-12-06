@@ -1,9 +1,12 @@
 import dash
-from dash import dcc, html, Input, Output, ctx
+from dash import dcc, html, Input, Output, ctx, callback_context
 import carte 
 import os
 import demography
 import dash_bootstrap_components as dbc
+import fertility
+import getStats
+
 
 
 import plotly.graph_objects as go
@@ -12,7 +15,7 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 country_selected = "France"
 
-
+stats = getStats.run()
 # Layout de l'application avec la sidebar et contenu principal
 app.layout = html.Div([
     html.Div([
@@ -33,31 +36,49 @@ app.layout = html.Div([
             # Sidebar
             html.Aside([
                 html.I(className="fa-solid fa-people-group", id="one"),
-                html.I(className="fa-solid fa-coins"),
-                html.I(className="fa-solid fa-graduation-cap"),
-                html.I(className="fa-solid fa-leaf"),
-                html.I(className="fa-solid fa-language")
+                html.I(className="fa-solid fa-coins", id="two"),
+                html.I(className="fa-solid fa-graduation-cap", id="three"),
+                html.I(className="fa-solid fa-leaf", id="four"),
+                html.I(className="fa-solid fa-language", id="five")
             ],className="Nav"),
 
             # Content area
             html.Div([
-             
+             html.P(stats["Moyenne"])
 
             ],className="content", id="content")
         ],)
     ], className="test2")
 ],)
-
-# Callback for the content div
+print(stats)
 @app.callback(
     Output("content", "children"),
-    Input("one", "n_clicks"),
+    [Input("one", "n_clicks"), Input("two", "n_clicks"), Input("three", "n_clicks"), Input("four", "n_clicks"), Input("five", "n_clicks")],
     prevent_initial_call=True
 )
-def update_content(one_clicks):
-    global country_selected
-    country_selected = "Senegal"
-    return [dcc.Graph(id="demography", figure=demography.run()), dcc.Graph(id="demography", figure=demography.run()), dcc.Graph(id="demography", figure=demography.run())]
+def update_content(one_clicks, two_clicks, three_clicks, four_clicks, five_clicks):
+    ctx = callback_context
+    if not ctx.triggered:
+        return html.P("No button clicked")
+    button_id = ctx.triggered[0]['prop_id'].split('.')[0]
+    
+    if button_id == "one":
+        return [
+            dcc.Graph(id="demography", figure=demography.run()),
+            dcc.Graph(id="fertility", figure=fertility.run())
+        ]
+    elif button_id == "two":
+        return html.P("deuxieme ecran")
+    elif button_id == "three":
+        return html.P("troisieme ecran")
+    elif button_id == "four":
+        return html.P("quatrieme ecran")
+    elif button_id == "five":
+        return html.P("cinquieme ecran")
+
+
+
+
 
 
 # Callback pour gérer le clic sur le bouton
@@ -82,7 +103,7 @@ def display_map(_):
     Input("bouton", "n_clicks"),
     prevent_initial_call=True
 )
-def test(_):
+def f(_):
     return "carte"
 
 # Exécution du serveur
