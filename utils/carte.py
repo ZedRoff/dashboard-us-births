@@ -30,15 +30,26 @@ def generate_map():
         coords=[x,y]
         icone = folium.Icon(color="blue", icon="globe")
         tooltip = f"{name} {area}km²"
-        js_code = f"""
-            <script>
-                alert("You clicked on {name}!");
-                // You can add more JavaScript here to perform actions like changing the map view or making an API call
-            </script>
+        marker_id=f"marker-{i}"
+        popup_html = f"""
+        <div>
+            <p><b>{name}</b></p>
+            <button onclick="handleMarkerClick('{name}')">Afficher</button>
+        </div>
         """
-        iframe = folium.IFrame(html=js_code, width=200, height=100)
-        popup = folium.Popup(iframe, max_width=300)
-        
-        folium.Marker(location=coords, popup=popup,tooltip = tooltip, icon=icone).add_to(marker_cluster)
-    map.save(outfile='map.html')
+
+        popup = folium.Popup(popup_html, max_width=300)
+
+        folium.Marker(location=coords, popup=popup, tooltip=tooltip, icon=icone, id=marker_id).add_to(marker_cluster)
+
+    map.save(outfile='assets/map.html')
+
+    with open('assets/map.html', 'a') as map_file:
+        map_file.write("""
+<script>
+function handleMarkerClick(name) {
+    localStorage.setItem("selected_marker", name);
+}
+</script>
+        """)
 

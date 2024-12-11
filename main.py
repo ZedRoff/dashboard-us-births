@@ -1,5 +1,5 @@
 import dash
-from dash import html
+from dash import html, dcc, Output, Input
 
 import dash_bootstrap_components as dbc
 import utils.getStats as getStats
@@ -19,20 +19,23 @@ stats = getStats.run()
 # Layout de l'application avec la sidebar et contenu principal
 app.layout = html.Div([
     html.Div([
-        html.Iframe(srcDoc="", id="map-frame")
+        html.Iframe(src="", id="map-frame")
     ],  id="iframe-container"),
-
     html.Div([
         create_navbar(),
         html.Main([
             create_sidebar(),
             html.Div([
-             html.P(stats["Moyenne"])
-
+             html.Button("Change location", id="change-location"),
+             dcc.Store(id="location-store", data="France"),
+             html.P(id="location-display")
             ],className="content", id="content")
         ])
     ], className="test2")
-],)
+])
+
+
+
 
 register_callbacks(app)
 

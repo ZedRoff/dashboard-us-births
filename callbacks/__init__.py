@@ -8,6 +8,5 @@ def register_callbacks(app):
         if file_name != "__init__.py":
             module_name = f"callbacks.{file_name[:-3]}"
             module = importlib.import_module(module_name)
-            print(module)
             module.register(app)
  
