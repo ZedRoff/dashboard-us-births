@@ -13,7 +13,7 @@ def create_graph():
     languages = languages.str.replace(" ", "_")
 
     # Créer le nuage de mots
-    wordcloud = WordCloud(width=1000, height=400, background_color="purple", colormap="spring").generate(' '.join(languages))
+    wordcloud = WordCloud(width=1000, height=400, background_color="white", colormap="spring").generate(' '.join(languages))
 
     # Sauvegarder l'image du nuage de mots dans un buffer
     buffer = io.BytesIO()
