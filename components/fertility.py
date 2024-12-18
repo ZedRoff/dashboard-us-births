@@ -1,53 +1,37 @@
-
 import plotly.graph_objects as go
+import pandas as pd
 import utils.helpers as helpers
+
 def create_graph():
-    # Charger le fichier CSV (remplace "world-data-2023.csv" par le chemin exact)
+
+    # Charger les données
     df = helpers.load_data()
 
-    # Nom du pays à analyser
-    pays_sélectionné = 'France'  # Remplacez par le nom du pays souhaité
+    # Assumer que "Fertility Rate" est déjà au bon format
+    df["Fertility Rate"] = pd.to_numeric(df["Fertility Rate"], errors='coerce')
 
-    # Filtrer les données pour le pays sélectionné
-    df_pays = df[df['Country'] == pays_sélectionné]
+    # Vérifier que les colonnes nécessaires existent
+    required_columns = ["Fertility Rate", "Country"]
+    df.dropna(subset=["Fertility Rate"], inplace=True)
 
-    # Vérifier si le pays existe
-    if df_pays.empty:
-        print(f"Le pays {pays_sélectionné} n'est pas trouvé dans le dataset.")
-    else:
-    # Extraire les données d'intérêt
-        birth_rate = df_pays['Birth Rate'].values[0]
-        fertility_rate = df_pays['Fertility Rate'].values[0]
-        life_expectancy = df_pays['Life expectancy'].values[0]
+    # Créer des catégories pour le taux de fécondité
+    categories = pd.cut(df["Fertility Rate"], bins=[0, 2, 4, 6, 8], labels=["<2 (Fertility rate below 2)", "2-4 (Fertility rate between 2 and 4)", "4-6 (Fertility rate between 4 and 6)", "6-8 Fertility rate between 6 and 8)"])
 
-    # Créer le graphique combiné
-        fig = go.Figure()
+    # Compter le nombre de pays dans chaque catégorie
+    category_counts = categories.value_counts()
 
-    # Ajouter les barres pour Birth Rate et Fertility Rate
-        fig.add_trace(go.Bar(
-        x=['Birth Rate', 'Fertility Rate'],
-        y=[birth_rate, fertility_rate],
-        name='Rate',
-        marker_color='blue'
-        ))
+    # Créer le graphique circulaire
+    fig = go.Figure(data=[go.Pie(
+        labels=category_counts.index,
+        values=category_counts.values,
+        marker=dict(colors=["#E74C3C", "#229954", "#884EA0", "#D0D3D4"],line=dict(width=2, color='black')  # Contour noir
+    )
+    )])
 
-    # Ajouter une ligne pour Life Expectancy
-        fig.add_trace(go.Scatter(
-        x=['Birth Rate', 'Fertility Rate'],
-        y=[life_expectancy, life_expectancy],  # Associer une ligne horizontale
-        mode='markers',
-        name="Life expectancy",
-        line=dict(color='red', width=3),
-        marker=dict(size=10)
-        ))
-
-        # Mise en forme du graphique
-        fig.update_layout(
-        title=f"Indicateurs démographiques pour {pays_sélectionné}",
-        xaxis_title="Indicateurs",
-        yaxis_title="Valeurs",
-        legend_title="Légende",
+    # Mise à jour du layout
+    fig.update_layout(
+        title="Distribution of Countries by Fertility Rate",
         template="plotly_white"
-        )
+    )
 
-        return fig
+    return fig
