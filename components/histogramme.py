@@ -1,60 +1,36 @@
 import pandas as pd
 import plotly.express as px
-import dash
-from dash import dcc, html
-from dash.dependencies import Input, Output
 
 # Charger les données
 file_path = '../data/us_births_2016_2021.csv'
 df = pd.read_csv(file_path)
 
-# Initialiser l'application Dash
-app = dash.Dash(__name__)
-
-# Créer une liste d'états pour le menu déroulant
-states = df['State'].unique()
-
-# Créer la mise en page de l'application
-app.layout = html.Div([
-    html.H1('Nombre de Naissances par Année pour un État'),
-    
-    # Menu déroulant pour sélectionner un état
-    dcc.Dropdown(
-        id='state-dropdown',
-        options=[{'label': state, 'value': state} for state in states],
-        value=states[0],  # valeur initiale sélectionnée
-        style={'width': '50%'}
-    ),
-    
-    # Graphique pour afficher l'histogramme
-    dcc.Graph(id='births-histogram')
-])
-
-# Callback pour mettre à jour l'histogramme en fonction de l'état sélectionné
-@app.callback(
-    Output('births-histogram', 'figure'),
-    Input('state-dropdown', 'value')
-)
-def update_histogram(selected_state):
+# Créer une fonction pour afficher l'histogramme
+def plot_births_by_state(selected_state):
     # Filtrer les données pour l'état sélectionné
     df_state = df[df['State'] == selected_state]
     
     # Agréger le nombre de naissances par année pour l'état sélectionné
-    births_by_year = df_state.groupby('Year')['Number of Births'].sum()
-    
+    births_by_year = df_state.groupby('Year')['Number of Births'].sum().reset_index()
+
     # Créer un histogramme avec Plotly
     fig = px.bar(
         births_by_year,
-        x=births_by_year.index,
-        y=births_by_year.values,
-        labels={'x': 'Année', 'y': 'Nombre de naissances'},
-        title=f'Nombre de naissances par année - {selected_state}',
-        color=births_by_year.index.astype(str),  # Couleur par année
-        color_discrete_sequence=px.colors.qualitative.Set2  # Choisir une palette de couleurs
+        x='Year',  # Utiliser la colonne 'Year' pour l'axe des X
+        y='Number of Births',  # Utiliser la colonne 'Number of Births' pour l'axe des Y
+        labels={'Year': 'Year', 'Number of Births': 'Number of births'},
+        title=f'Number of births per year in {selected_state}',
+        color_discrete_sequence=["#4A7B9D"]  # Spécification de la couleur
     )
     
-    return fig
+    # Afficher le graphique
+    fig.show()
 
-# Exécuter l'application Dash
-if __name__ == '__main__':
-    app.run_server(debug=True)
+# Liste des états
+states = df['State'].unique()
+
+# Choisir un état pour l'exemple (tu peux changer l'état ici)
+selected_state = states[0]
+
+# Afficher le graphique pour l'état sélectionné
+plot_births_by_state(selected_state)

@@ -1,6 +1,8 @@
 import pandas as pd
 import plotly.express as px
 df = pd.read_csv('../data/us_births_2016_2021.csv')
+
+
 def generate():
     column_name = "Average Age of Mother (years)"
 
@@ -9,29 +11,26 @@ def generate():
         df,
         x=column_name,
         nbins=15,  # Plus de détails avec davantage de bins
-        title="Répartition des Âges des Mères",
-        labels={column_name: "Âge moyen des mères (en années)"},  # Renomme l'axe X
-        template="plotly_dark",  # Style sombre pour un effet dynamique
-        color_discrete_sequence=["#FFA07A"],  # Couleur personnalisée
+        title="Age distribution of mothers",
+        labels={column_name: "Average age of mothers (in years)"},  # Renomme l'axe X
+        color_discrete_sequence=["#4A7B9D"],  # Couleur personnalisée
     )
 
     # Ajouter des ajustements esthétiques
     fig.update_layout(
-        title_font=dict(size=28, family="Comic Sans MS", color="#FFD700"),  # Police fun et couleur dorée
+        title_font=dict(size=28, family="Comic Sans MS", color="black"),  # Police fun et couleur dorée
         xaxis=dict(
             title="Âge moyen des mères (années)",
-            title_font=dict(size=18, family="Courier New", color="#32CD32"),  # Police classique en vert
-            tickfont=dict(size=14, color="#87CEFA"),  # Couleur des ticks
-            gridcolor="#444444",
+            title_font=dict(size=18, family="Courier New", color="black"),  # Police classique en vert
+            tickfont=dict(size=14, color="black"),  # Couleur des ticks
+            gridcolor="white",
         ),
         yaxis=dict(
             title="Nombre de cas",
-            title_font=dict(size=18, family="Courier New", color="#32CD32"),
-            tickfont=dict(size=14, color="#87CEFA"),
-            gridcolor="#444444",
+            title_font=dict(size=18, family="Courier New", color="black"),
+            tickfont=dict(size=14, color="black"),
+            gridcolor="white",
         ),
-        paper_bgcolor="#1A1A1A",  # Fond sombre pour l'ensemble
-        plot_bgcolor="#2F4F4F",  # Fond du graphique
         margin=dict(l=50, r=50, t=80, b=50),  # Marges bien définies
     )
 
@@ -41,6 +40,5 @@ def generate():
         opacity=0.9,  # Légère transparence pour un effet "glossy"
     )
 
-    # Afficher l'histogramme
-    return fig
-
+    fig.show()
+generate()

@@ -1,5 +1,6 @@
 import pandas as pd
 import plotly.express as px
+
 df = pd.read_csv('../data/us_births_2016_2021.csv')
 def generate():
     # Calculer le nombre total de naissances par année
@@ -10,21 +11,23 @@ def generate():
         births_per_year,
         x="Year",  # L'axe des abscisses représente l'année
         y="Number of Births",  # L'axe des ordonnées représente le nombre de naissances
-        title="Évolution du Nombre de Naissances par Année",
-        labels={"Number of Births": "Nombre de Naissances", "Year": "Année"},
-        template="plotly_dark",  # Thème sombre
+        title="Number of births per year",
+        labels={"Number of Births": "Number of births", "Year": "Year"},
     )
 
     # Ajuster l'apparence pour améliorer la lisibilité
     fig.update_layout(
         height=800,
         width=1500,
-        paper_bgcolor="#1A1A1A",  # Fond sombre
-        plot_bgcolor="#2F4F4F",  # Fond du graphique
-        title="Évolution du Nombre de Naissances par Année",
-        xaxis_title="Année",
-        yaxis_title="Nombre de Naissances",
+        title="Number of births per year",
+        xaxis_title="Year",
+        yaxis_title="Number of births",
+        yaxis=dict(
+            rangemode="tozero",  # Bien définir la plage de l'axe Y
+        )
     )
+    fig.update_traces(line_color='#3AABF6', line_width=3)
 
-    # Afficher le graphique
-    return fig
+    fig.show()
+generate()
+

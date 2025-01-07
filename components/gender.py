@@ -19,7 +19,7 @@ def generate():
         color="Gender",  # Utiliser la colonne 'Gender' pour définir les couleurs
         color_discrete_map={
             "M": "#3AABF6",  # Bleu pour les garçons
-            "F": "F63AAE",  # Rose pour les filles
+            "F": "#F63AAE",  # Rose pour les filles
         }
     )
 
