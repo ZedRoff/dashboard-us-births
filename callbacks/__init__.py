@@ -1,5 +1,4 @@
-import callbacks.buttons_callback as bc
-import callbacks.map_callbacks as mc
+
 import importlib 
 import os
 def register_callbacks(app):

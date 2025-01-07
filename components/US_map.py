@@ -3,14 +3,10 @@ import json
 import folium
 from dash import Dash, html, dcc, Input, Output
 from shapely.geometry import shape
-
-
-# Charger les données CSV
-data_file = "us_births_2016_2021.csv"
-birth_data = pd.read_csv(data_file)
+birth_data = pd.read_csv("../data/us_births_2016_2021.csv")
 
 # Charger le fichier GeoJSON
-geojson_file = "us-states.json"
+geojson_file = "../data/us-states.json"
 with open(geojson_file, 'r') as f:
     geojson_data = json.load(f)
 
@@ -51,20 +47,36 @@ def create_map(year):
         # Récupérer l'abréviation de l'État
         state_abbr = state_data['State Abbreviation'].values[0]
 
+        
+        
         # Calculer le centroïde géométrique de l'État
         polygon = shape(feature['geometry'])
         centroid = polygon.centroid
-    
-        
+
+       
+        fontSize = 0
+        if state_abbr in small_states:
+            fontSize = 10
+        else:
+            fontSize = 14
+        x = 0
+        y = 0
+        if state_abbr == "FL":
+            x = centroid.x+0.5
+            y = centroid.y 
+        else:
+            x = centroid.x
+            y = centroid.y
+
         # Ajouter l'abréviation comme texte au centre géographique de l'État
         folium.Marker(
-            location=[centroid.y, centroid.x],
-            icon=folium.DivIcon(html=f"<div style='font-size:14px; color:black; font-weight:bold; text-align:center'>{state_abbr}</div>")
+            location=[y, x],
+            icon=folium.DivIcon(html=f"<div style='font-size:{fontSize}px; color:black; font-weight:bold; text-align:center'>{state_abbr}</div>")
         ).add_to(us_map)
     
     # Sauvegarder la carte temporairement
-    us_map.save("temp_map.html")
-    with open("temp_map.html", "r") as file:
+    us_map.save("../assets/temp_map.html")
+    with open("../assets/temp_map.html", "r") as file:
         map_html = file.read()
     return map_html
 

@@ -3,7 +3,7 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 
 # Charger les données depuis un fichier CSV
-csv_file_path = "us_births_2016_2021.csv"  # Remplacez par le chemin de votre fichier CSV
+csv_file_path = "../data/us_births_2016_2021.csv"  # Remplacez par le chemin de votre fichier CSV
 df = pd.read_csv(csv_file_path)
 
 # Définir les colonnes d'intérêt

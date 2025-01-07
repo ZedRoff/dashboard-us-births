@@ -5,7 +5,7 @@ from dash import dcc, html
 from dash.dependencies import Input, Output
 
 # Charger les données
-file_path = 'us_births_2016_2021.csv'
+file_path = '../data/us_births_2016_2021.csv'
 df = pd.read_csv(file_path)
 
 # Initialiser l'application Dash
