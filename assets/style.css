@@ -20,7 +20,7 @@
     align-items:center;
     text-decoration:none;
 }
-.container_main {
+.container_main, #content {
     display:flex;
     flex-direction:column;
     gap: 100px;
@@ -170,4 +170,8 @@
 .source_button:nth-child(2) {
 
     background: #71adf9;
+}
+
+#map {
+    width: 500px;
 }

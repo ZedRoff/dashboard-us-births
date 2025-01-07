@@ -1,11 +1,14 @@
-import dash
-from dash import html, dcc, Output, Input
+
+from dash import html, Output, Input, Dash, callback_context
 
 import dash_bootstrap_components as dbc
-
+from views.homepage import homepage
+from views.header import header
+from views.local import local
+from views.glob import glob
 from callbacks import register_callbacks
 # Initialiser l'application Dash
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 
 
@@ -13,68 +16,34 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 
 # Layout de l'application avec la sidebar et contenu principal
-app.layout = html.Div([
+app.layout = html.Div([html.Div(header("home"), id="header"), html.Div(homepage(), id="content")], className="container_main")
 
-     html.Header([
-        html.A([
-            html.I(className="fa-solid fa-map-marker-alt"),
-            html.H1("US Births", id="title_main"),
-            
-     ], className="element_header", href="#"),
-     html.Div([
-        html.A("Accueil", className="nav_item nav_item_active"),
-        html.A("Données Locales", className="nav_item"),
-        html.A("Données Globales", className="nav_item"),
- html.I(className="fa-solid fa-moon", id="theme_switch")
-     ], id="navbar")
-], className="header_main"),
 
-    html.Main([
-            html.Div([
-                html.H2("US Births from 2016 to 2021", id="subtitle_main"),
-                html.P("A minimalist dashboard developed for a ESIEE course that showcase US births data", id="description_main"),
-                 html.Div([
 
-        html.Div([
-            html.I(className="fa-solid fa-flag icon_stat"),
-            html.H3("States", id="stat_title"),
-            html.P("51", className="stat_data")
 
-        ], className="stat_card"),
-
-        html.Div([
-            html.I(className="fa-solid fa-chart-bar icon_stat"),
-            html.H3("Graphs", id="stat_title"),
-            html.P("15", className="stat_data")
-
-        ], className="stat_card"),
-
-    ], id="stats_main")
-            ], id="block_left"),
-            html.Img(src="./assets/image.png", id="image_main")
-    ], id="block_main"),
-
-html.Div(
-html.Div([
-            html.H3(
-                "Data source", id="source_title"
-            ),
-            html.P("The data in this dataset was obtained using CDC's WONDER retrieval tool on the CDC Natality page"),
-            html.Div([
-                html.A("Kaggle", className="source_button"),
-                html.A("CSV", className="source_button")
-            ], id="source_buttons")
-], id="source"), id="source_section"
+@app.callback(
+    [Output('header', 'children'), Output('content', 'children')],
+    [Input('home', 'n_clicks'), Input('local', 'n_clicks'), Input('global', 'n_clicks')]
 )
-        
+
+def update_headeer(n_clicks_home, n_clicks_local, n_clicks_global):
+
+    content = homepage()
+
+    ctx = callback_context
+    triggered_id = ctx.triggered[0]['prop_id'].split('.')[0]
+    if triggered_id == "home":
+        content = homepage()
+    elif triggered_id == "local":
+        content = local()
+    elif triggered_id == "global":
+        content = glob()
+    else:
+        content = homepage()
     
-    
-], className="container_main")
-
-
-
-register_callbacks(app)
-
+    if len(triggered_id) == 0:
+        return header("home"), content
+    return header(triggered_id), content 
 # Exécution du serveur
 if __name__ == '__main__':
     app.run_server(debug=True)
