@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns 
 
-# Charger les données depuis le fichier CSV
-file_path = "us_births_2016_2021.csv"  # Remplacez par le chemin vers votre fichier
+# Charger les données
+file_path = '../data/us_births_2016_2021.csv'
 df = pd.read_csv(file_path)
 
 sns.histplot(data=df.loc[:][['Gender', 'Average Birth Weight (g)']], hue='Gender', x='Average Birth Weight (g)')

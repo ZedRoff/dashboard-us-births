@@ -2,7 +2,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt 
 
-file_path = "us_births_2016_2021.csv"  # Remplacez par le chemin vers votre fichier
+# Charger les données
+file_path = '../data/us_births_2016_2021.csv'
 df = pd.read_csv(file_path)
 
 fig,(ax1,ax2) = plt.subplots(1,2,figsize=(15,5),facecolor="#FFFFFF")
