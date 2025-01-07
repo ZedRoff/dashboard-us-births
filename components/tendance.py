@@ -1,7 +1,6 @@
 import pandas as pd
 import plotly.express as px
-import utils.helpers as h
-df = pd.read_csv(h.load_data())
+df = pd.read_csv('../data/us_births_2016_2021.csv')
 def generate():
     # Calculer le nombre total de naissances par année
     births_per_year = df.groupby('Year')['Number of Births'].sum().reset_index()

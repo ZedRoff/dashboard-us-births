@@ -1,8 +1,7 @@
 import pandas as pd
 import plotly.express as px
-import utils.helpers as h
 
-df = pd.read_csv(h.load_data())
+df = pd.read_csv('../data/us_births_2016_2021.csv')
 
 def generate():
     # Calculer le nombre total de naissances par sexe pour chaque année
@@ -10,27 +9,35 @@ def generate():
     # Créer un graphique à secteurs pour chaque année
     fig = px.pie(
         gender_year_counts,
+        hole = 0.5,
         names="Gender",  # Sexe du bébé
         values="Number of Births",  # Nombre de naissances par sexe
-        title="Répartition des Naissances par Sexe pour Chaque Année",
-        labels={"Number of Births": "Nombre de Naissances", "Gender": "Sexe"},
-        template="plotly_dark",  # Thème sombre
+        title="Distribution of births by sex for each year",
+        labels={"Number of Births", "Gender"},
         facet_col="Year",  # Créer un sous-graphique pour chaque année
         facet_col_wrap=3,  # Afficher 3 années par ligne
         color="Gender",  # Utiliser la colonne 'Gender' pour définir les couleurs
         color_discrete_map={
-            "M": "blue",  # Bleu pour les garçons
-            "F": "pink",  # Rose pour les filles
+            "M": "#3AABF6",  # Bleu pour les garçons
+            "F": "F63AAE",  # Rose pour les filles
         }
+    )
+
+    fig.update_traces(
+    textinfo="percent+label",  # Affiche le pourcentage et le label dans les sections
+       textfont=dict(family="Arial", size=14, color="white", weight="bold") 
     )
 
     # Ajuster l'apparence pour améliorer la lisibilité
     fig.update_layout(
-        height=1000,  # Hauteur pour une meilleure lisibilité
-        width=1500,  # Largeur pour s'assurer que tout est visible
-        paper_bgcolor="#1A1A1A",  # Fond sombre
-        plot_bgcolor="#2F4F4F",  # Fond du graphique
-        title="Répartition des Naissances par Sexe pour Chaque Année",
+        height=800,  # Hauteur pour une meilleure lisibilité
+        width=1200,  # Largeur pour s'assurer que tout est visible
+        title="Distribution of births by sex for each year",
+         legend=dict(
+            orientation="v",  # Orientation verticale
+            y=-0.3,  # Placer la légende sous le graphique
+            x=0.1,
+        )
     )
-
-    return fig
+    fig.show()
+generate()

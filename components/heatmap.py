@@ -1,9 +1,8 @@
 import pandas as pd
 import plotly.express as px
-import utils.helpers as h
 # Charger les données depuis le fichier CSV
 
-df = pd.read_csv(h.load_data())
+df = pd.read_csv('../data/us_births_2016_2021.csv')
 def generate():
     # Créer une heatmap pour afficher les poids moyens à la naissance par état et par année
     heatmap_data = df.pivot_table(
