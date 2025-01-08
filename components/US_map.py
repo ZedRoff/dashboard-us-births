@@ -1,8 +1,11 @@
 import pandas as pd
 import json
-import folium
 from dash import Dash, html, dcc, Input, Output
+import plotly.express as px
+import plotly.graph_objects as go
 from shapely.geometry import shape
+
+# Charger les données
 birth_data = pd.read_csv("../data/us_births_2016_2021.csv")
 
 # Charger le fichier GeoJSON
@@ -11,74 +14,70 @@ with open(geojson_file, 'r') as f:
     geojson_data = json.load(f)
 
 # Liste des petits États pour lesquels on veut déporter l'affichage
-small_states = ["RI", "CT", "DE", "DC", "NJ", "MD", "MA", "VT", "NH"]
+small_states = ["RI", "CT", "DE", "NJ", "MD", "MA", "VT", "NH"]
 
-# Fonction pour créer une carte folium
-def create_map(year):
+# Fonction pour créer une carte Plotly
+def create_plotly_map(year):
     # Filtrer les données pour l'année choisie
     birth_data_year = birth_data[birth_data['Year'] == year]
     
     # Agréger les données par État pour calculer le nombre total de naissances
     state_births_year = birth_data_year.groupby(['State', 'State Abbreviation'])['Number of Births'].sum().reset_index()
-    
-    # Créer une carte centrale
-    us_map = folium.Map(location=[37.0902, -95.7129], zoom_start=4, tiles="cartodbpositron")
-    
-    # Ajouter une couche choroplèthe pour représenter les naissances par État
-    folium.Choropleth(
-        geo_data=geojson_file,
-        name="choropleth",
-        data=state_births_year,
-        columns=["State", "Number of Births"],
-        key_on="feature.properties.name",
-        fill_opacity=0.7,
-        bins=[0, 50000, 100000, 150000, 200000, 250000, 300000, 350000, 400000, 450000, 500000],
-        fill_color="OrRd",
-        line_weight=2,
-        highlight=True,
-        legend_name=f"Number of Births in {year}",
-    ).add_to(us_map)
-    
-    # Ajouter les abréviations directement au centre géographique de chaque État
+
+    # Créer une carte choroplèthe avec Plotly
+    fig = px.choropleth(
+        state_births_year,
+        geojson=geojson_data,
+        locations="State",  # Colonne correspondant au nom des États
+        featureidkey="properties.name",  # Clé correspondant au GeoJSON
+        color="Number of Births",
+        color_continuous_scale="OrRd",
+        scope="usa",
+        labels={"Number of Births": "Naissances"}
+    )
+
+    # Ajouter des annotations pour les petits États
     for feature in geojson_data['features']:
         state_name = feature['properties']['name']
         state_data = state_births_year[state_births_year['State'] == state_name]
-        
-        # Récupérer l'abréviation de l'État
-        state_abbr = state_data['State Abbreviation'].values[0]
+        if not state_data.empty:
+            state_abbr = state_data['State Abbreviation'].values[0]
+            centroid = shape(feature['geometry']).centroid
 
-        
-        
-        # Calculer le centroïde géométrique de l'État
-        polygon = shape(feature['geometry'])
-        centroid = polygon.centroid
+            if state_abbr in small_states:
+                font_size = 11
+            elif state_abbr == "DC":
+                font_size = 5
+            else:
+                font_size = 14
 
-       
-        fontSize = 0
-        if state_abbr in small_states:
-            fontSize = 10
-        else:
-            fontSize = 14
-        x = 0
-        y = 0
-        if state_abbr == "FL":
-            x = centroid.x+0.5
-            y = centroid.y 
-        else:
-            x = centroid.x
-            y = centroid.y
+            x_offset = 0.5 if state_abbr == "FL" else 0
 
-        # Ajouter l'abréviation comme texte au centre géographique de l'État
-        folium.Marker(
-            location=[y, x],
-            icon=folium.DivIcon(html=f"<div style='font-size:{fontSize}px; color:black; font-weight:bold; text-align:center'>{state_abbr}</div>")
-        ).add_to(us_map)
-    
-    # Sauvegarder la carte temporairement
-    us_map.save("../assets/temp_map.html")
-    with open("../assets/temp_map.html", "r") as file:
-        map_html = file.read()
-    return map_html
+            # Ajouter une annotation au centre de l'État en utilisant des coordonnées géographiques
+            fig.add_trace(go.Scattergeo(
+                lon=[centroid.x + x_offset],  # Utiliser la longitude
+                lat=[centroid.y],            # Utiliser la latitude
+                text=[state_abbr],
+                mode="text",
+                showlegend=False,
+                textfont=dict(size=font_size, color="black"),
+                hoverinfo="none"
+                
+            ))
+  
+    # Modifier la position de la légende
+    fig.update_layout(
+        coloraxis_colorbar=dict(
+            orientation="h",  # Orientation horizontale de la barre de couleurs
+            y=-0.3,  # Positionner légèrement en bas
+            title="Nombre de naissances"  # Titre de la légende
+        )
+    )
+
+    # Ajuster les limites et l'apparence de la carte
+    fig.update_geos( visible=False, subunitcolor="red")
+
+    return fig
 
 # Créer l'application Dash
 app = Dash(__name__)
@@ -92,17 +91,16 @@ app.layout = html.Div([
         value=2016,
         clearable=False,
     ),
-    html.Div(id="map-container", style={"height": "600px", "margin-top": "20px"})
+    dcc.Graph(id="map-plotly", style={"height": "600px", "margin-top": "20px"})
 ])
 
 # Callback pour mettre à jour la carte
 @app.callback(
-    Output("map-container", "children"),
+    Output("map-plotly", "figure"),
     Input("year-dropdown", "value")
 )
-def update_map(year):
-    map_html = create_map(year)
-    return html.Iframe(srcDoc=map_html, style={"width": "100%", "height": "600px", "border": "none"})
+def update_plotly_map(year):
+    return create_plotly_map(year)
 
 # Exécuter l'application
 if __name__ == "__main__":
