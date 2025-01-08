@@ -19,11 +19,12 @@
     justify-content: center;
     align-items:center;
     text-decoration:none;
+    z-index:999;
 }
 .container_main, #content {
     display:flex;
     flex-direction:column;
-    gap: 100px;
+    gap: 50px;
 
 }
 #title_main {
@@ -179,4 +180,54 @@
 #container_local {
     display:flex;
     justify-content: space-evenly;
+}
+#gender_graph {
+    width: 100%;
+    background:red;
+    padding:25px;
+}
+#sidebar {
+    background:#293050;
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    width:250px; 
+}
+#main_global {
+margin-left: 250px;
+padding:15px;
+}
+#section {
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+}
+#stats_global {
+
+    display:flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items:center;
+}
+.stat_global {
+    padding: 25px;
+    border-bottom:2px solid #ff5733;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+.data_splitter {
+    display:flex;
+    flex-direction:row;
+    gap:15px;
+    align-items:center;
+
+}
+
+.stat_data {
+    font-size:25px;
+    font-weight:bold;
+}
+.stat_global_title {
+    color:grey;
+    text-transform:uppercase;
 }

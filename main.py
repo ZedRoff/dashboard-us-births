@@ -10,16 +10,8 @@ from callbacks import register_callbacks
 # Initialiser l'application Dash
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-
-
-
-
-
 # Layout de l'application avec la sidebar et contenu principal
 app.layout = html.Div([html.Div(header("home"), id="header"), html.Div(homepage(), id="content")], className="container_main")
-
-
-
 
 @app.callback(
     [Output('header', 'children'), Output('content', 'children')],
@@ -27,9 +19,7 @@ app.layout = html.Div([html.Div(header("home"), id="header"), html.Div(homepage(
 )
 
 def update_headeer(n_clicks_home, n_clicks_local, n_clicks_global):
-
     content = homepage()
-
     ctx = callback_context
     triggered_id = ctx.triggered[0]['prop_id'].split('.')[0]
     if triggered_id == "home":
@@ -39,8 +29,7 @@ def update_headeer(n_clicks_home, n_clicks_local, n_clicks_global):
     elif triggered_id == "global":
         content = glob()
     else:
-        content = homepage()
-    
+        content = glob()
     if len(triggered_id) == 0:
         return header("home"), content
     return header(triggered_id), content 
