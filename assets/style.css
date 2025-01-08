@@ -11,6 +11,9 @@
     justify-content: space-between;
     padding-left:25px;
     padding-right:50px;
+    z-index: 999;
+    top: -10px;
+    box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.5);
 }
 .element_header {
     display:flex;
@@ -24,7 +27,7 @@
 .container_main, #content {
     display:flex;
     flex-direction:column;
-    gap: 50px;
+    gap: 25px;
 
 }
 #title_main {
@@ -187,15 +190,15 @@
     padding:25px;
 }
 #sidebar {
-    background:#293050;
+    background:#131727;
     position:fixed;
     top:0;
     bottom:0;
     left:0;
-    width:250px; 
+    width:300px; 
 }
 #main_global {
-margin-left: 250px;
+margin-left: 300px;
 padding:15px;
 }
 #section {
@@ -207,13 +210,25 @@ padding:15px;
 
     display:flex;
     flex-flow: row wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items:center;
+    gap: 50px;
+    width: 80%;
+    margin: 0 auto;
 }
 .stat_global {
     padding: 25px;
     border-bottom:2px solid #ff5733;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    display:flex;
+    border-radius:5px;
+    gap:50px;
+
+    justify-content: space-between;
+}
+.stat_global:nth-child(3) {
+   width: 100%;
+   
 }
 .data_splitter {
     display:flex;
@@ -230,4 +245,51 @@ padding:15px;
 .stat_global_title {
     color:grey;
     text-transform:uppercase;
+    font-size:20px;
+}
+#elements_sidebar {
+    margin-top:75px;
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    gap: 5px;
+    padding: 10px;
+    border-top: 2px solid black;
+}
+
+.element_sidebar {
+    background:#1f2640  ;
+    padding:15px;
+    border-radius:5px;
+    width: 100%;
+    transition: .5s all;
+    margin-top:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
+.fa-chevron-right {
+    color:white;
+}
+.element_sidebar:hover {
+    cursor:pointer;
+    background: black;
+
+}
+.element_sidebar_title {
+    color:white;
+}
+
+#bar {
+    border-left: 1px solid rgba(173, 173, 173, 0.5);
+   
+}
+#special_stat_global {
+    display:flex;
+    align-self:flex-end;
+}
+
+.section {
+    padding:15px;
 }

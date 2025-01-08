@@ -28,6 +28,5 @@ def generate():
     )
     fig.update_traces(line_color='#3AABF6', line_width=3)
 
-    fig.show()
-generate()
+    return fig
 

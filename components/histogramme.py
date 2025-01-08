@@ -24,13 +24,5 @@ def plot_births_by_state(selected_state):
     )
     
     # Afficher le graphique
-    fig.show()
+    return fig
 
-# Liste des états
-states = df['State'].unique()
-
-# Choisir un état pour l'exemple (tu peux changer l'état ici)
-selected_state = states[0]
-
-# Afficher le graphique pour l'état sélectionné
-plot_births_by_state(selected_state)

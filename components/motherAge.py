@@ -40,5 +40,4 @@ def generate():
         opacity=0.9,  # Légère transparence pour un effet "glossy"
     )
 
-    fig.show()
-generate()
+    return fig
