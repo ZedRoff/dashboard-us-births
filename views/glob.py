@@ -30,7 +30,7 @@ def glob():
        html.Div([
             html.Div([
                sidebar_element("Statistiques globales"),
-               sidebar_element("Test 2"),
+               sidebar_element("Education"),
                sidebar_element("Test 3")
             ], id="elements_sidebar")
 
