@@ -25,8 +25,6 @@ def generate():
     fig.update_layout(
         height=1000,  # Ajuster la hauteur de la figure
         width=1500,  # Ajuster la largeur de la figure pour plus d'espace
-        paper_bgcolor="#1A1A1A",  # Fond sombre
-        plot_bgcolor="#2F4F4F",  # Fond de la carte
         xaxis=dict(tickangle=45),  # Rotation des étiquettes de l'axe x (années)
         yaxis=dict(tickangle=0),  # Rotation des étiquettes de l'axe y (états)
     )

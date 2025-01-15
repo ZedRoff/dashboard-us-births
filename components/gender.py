@@ -1,7 +1,7 @@
 import pandas as pd
 import plotly.express as px
 
-df = pd.read_csv('data/us_births_2016_2021.csv')
+df = pd.read_csv('../data/us_births_2016_2021.csv')
 
 def generate():
     # Calculer le nombre total de naissances par sexe pour chaque année
@@ -33,10 +33,6 @@ def generate():
         height=800,  # Hauteur pour une meilleure lisibilité
         width=1200,  # Largeur pour s'assurer que tout est visible
         title="Distribution of births by sex for each year",
-         legend=dict(
-            orientation="v",  # Orientation verticale
-            y=-0.3,  # Placer la légende sous le graphique
-            x=0.1,
-        )
+        showlegend=False,
     )
     return fig
