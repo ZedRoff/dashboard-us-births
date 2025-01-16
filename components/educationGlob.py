@@ -3,7 +3,7 @@ import plotly.express as px
 
 def generate():
     # Charger les données
-    file_path = '../data/us_births_2016_2021.csv'   
+    file_path = 'data/us_births_2016_2021.csv'   
     df = pd.read_csv(file_path)
 
     # Calculer la moyenne de l'âge des mères par niveau d'éducation
