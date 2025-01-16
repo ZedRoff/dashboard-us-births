@@ -21,7 +21,7 @@ def generate(state_filter):
         x=edu_codes_str,
         y=a['Number of Births'],
         text=a['Number of Births'], 
-        textposition='auto',
+        textposition='outside',
         marker=dict(color='#0A3161', line=dict(color='black', width=3)),
         name=f"Nombre moyen de naissances - {state_filter}", 
     ))
