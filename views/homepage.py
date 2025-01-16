@@ -65,8 +65,8 @@ def homepage():
                     ),
                     html.Div(
                         [
-                            html.A("Kaggle", className="source_button"),
-                            html.A("CSV", className="source_button"),
+                            html.A("Kaggle", className="source_button", target="_blank", href="https://kaggle.com/datasets/danbraswell/temporary-us-births/discussion/407750"),
+                            
                         ],
                         id="source_buttons",
                     ),

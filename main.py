@@ -35,8 +35,8 @@ from components import (
 # Initialiser l'application Dash
 app = Dash(
     __name__,
-    external_stylesheets=[dbc.themes.BOOTSTRAP],
-    suppress_callback_exceptions=True,
+    external_stylesheets=[dbc.themes.BOOTSTRAP], 
+    suppress_callback_exceptions=True
 )
 
 # Layout de l'application avec la sidebar et contenu principal
@@ -55,7 +55,7 @@ app.layout = html.Div(
     Output(
         "current-location-store", "data"
     ),  # Update the Store with the current location
-    Input("map-plotly", "clickData"),
+    Input("map-plotly", "clickData")
 )
 def update_current_location(click_data):
     """
@@ -76,7 +76,7 @@ def update_current_location(click_data):
     Output("local_graphs", "children"),
     Input(
         "current-location-store", "data"
-    ),  # Retrieve the current location from the store
+    )
 )
 def display_click_data(current_location):
     """
@@ -127,7 +127,7 @@ def payload(state):
         Input("home", "n_clicks"),
         Input("local", "n_clicks"),
         Input("global", "n_clicks"),
-    ],
+    ]
 )
 def update_header(*_):
     """
@@ -168,7 +168,7 @@ def update_header(*_):
         Input("gender", "n_clicks"),
         Input("weight", "n_clicks"),
         Input("births", "n_clicks"),
-    ],
+    ]
 )
 def update_global(*_):
     """
