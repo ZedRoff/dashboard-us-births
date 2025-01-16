@@ -96,6 +96,8 @@ To run this project, ensure you have:
   - `json`
   - `dash`
   - `dash_bootstrap_components`
+  - `numpy`
+  
 
 ---
 
