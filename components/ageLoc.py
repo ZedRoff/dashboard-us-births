@@ -2,9 +2,9 @@ import pandas as pd
 import plotly.express as px
 
 # Charger le fichier CSV
-df = pd.read_csv('../data/us_births_2016_2021.csv')
+df = pd.read_csv('data/us_births_2016_2021.csv')
 
-def generate_for_state(selected_state):
+def generate(selected_state):
     # Filtrer les données pour l'état sélectionné
     df_state = df[df['State'] == selected_state]
 
@@ -57,8 +57,6 @@ def generate_for_state(selected_state):
     )
 
     # Afficher le graphique
-    fig.show()
+    return fig
 
-# Appeler la fonction pour générer l'histogramme pour un état spécifique
-selected_state = "Texas"  # Remplacez par l'état souhaité
-generate_for_state(selected_state)
+

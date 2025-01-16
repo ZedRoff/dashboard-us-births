@@ -20,7 +20,12 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_callb
 # Layout de l'application avec la sidebar et contenu principal
 app.layout = html.Div([html.Div(header("home"), id="header"), html.Div(homepage(), id="content")], className="container_main")
 
-
+@app.callback(
+    Output("age-loc", "figure"),
+    Input("map-plotly", "clickData")
+)
+def update_age_loc(click_data):
+    return "test"
 
 
 @app.callback(
@@ -73,6 +78,7 @@ def update_plotly_map(year):
     return US_map.create_plotly_map(year)
 
 
+ 
 # Exécution du serveur
 if __name__ == '__main__':
     app.run_server(debug=True)

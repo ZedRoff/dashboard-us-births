@@ -1,7 +1,20 @@
 from dash import html, dcc
 import components.US_map as US_map
+import components.ageLoc as ageLoc
 def local():
     return html.Main([
-      dcc.Graph(id="test", figure=US_map.create_plotly_map(2020))
-
+        html.Div([
+             html.H1("US Births map (2016-2021)"),
+    dcc.Dropdown(
+        id="year-dropdown",
+        options=[{"label": str(year), "value": year} for year in range(2016, 2022)],
+        value=2016,
+        clearable=False,
+    ),
+    dcc.Graph(id="map-plotly", style={"height": "600px", "margin-top": "20px"})
+        ], id="map_part"),
+        html.Div([
+            dcc.Graph(id="age_loc", figure=ageLoc.generate("Texas"))
+        ], id="local_graphs")
+     
     ], id="container_local")
