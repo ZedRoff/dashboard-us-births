@@ -12,9 +12,9 @@ def glob():
                sidebar_element("Global statistics"),
                sidebar_element("Education"),
                sidebar_element("Age"),
-               sidebar_element("Genre"),
-               sidebar_element("Poids"),
-               sidebar_element("Naissances"),
+               sidebar_element("Gender"),
+               sidebar_element("Weight"),
+               sidebar_element("Births"),
             ], id="elements_sidebar")
 
        ], id="sidebar"), 

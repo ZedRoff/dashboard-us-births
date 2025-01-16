@@ -1,7 +1,7 @@
 import pandas as pd
 import plotly.express as px
 
-df = pd.read_csv('../data/us_births_2016_2021.csv')
+df = pd.read_csv('data/us_births_2016_2021.csv')
 
 def generate():
     # Calculer le nombre total de naissances par sexe pour chaque année

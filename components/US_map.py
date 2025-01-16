@@ -6,10 +6,10 @@ import plotly.graph_objects as go
 from shapely.geometry import shape
 
 # Charger les données
-birth_data = pd.read_csv("../data/us_births_2016_2021.csv")
+birth_data = pd.read_csv("data/us_births_2016_2021.csv")
 
 # Charger le fichier GeoJSON
-geojson_file = "../data/us-states.json"
+geojson_file = "data/us-states.json"
 with open(geojson_file, 'r') as f:
     geojson_data = json.load(f)
 
