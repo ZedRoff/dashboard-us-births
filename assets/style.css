@@ -207,6 +207,10 @@ z-index:99;
     flex-direction:column;
     gap:50px;
     flex:1;
+    width: 500px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height:500px;
 }
 
 #gender_graph {

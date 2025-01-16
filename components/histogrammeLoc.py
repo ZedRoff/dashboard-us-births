@@ -2,11 +2,11 @@ import pandas as pd
 import plotly.express as px
 
 # Charger les données
-file_path = '../data/us_births_2016_2021.csv'
+file_path = 'data/us_births_2016_2021.csv'
 df = pd.read_csv(file_path)
 
 # Créer une fonction pour afficher l'histogramme avec un style harmonisé
-def plot_births_by_state(selected_state):
+def generate(selected_state):
     # Filtrer les données pour l'état sélectionné
     df_state = df[df['State'] == selected_state]
     
@@ -61,7 +61,4 @@ def plot_births_by_state(selected_state):
     )
     
     # Afficher le graphique
-    fig.show()
-
-# Appeler la fonction avec un état spécifique
-plot_births_by_state("Arizona")
+    return fig
