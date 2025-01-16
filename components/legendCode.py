@@ -17,7 +17,7 @@ def generate():
     table = go.Figure(
         data=[go.Table(
             header=dict(
-                values=["Code", "Niveau d'éducation"],
+                values=["Code", "Education Level"],
                 fill_color='#0A3161',
                 align='center',
                 font=dict(size=14, color='white')
