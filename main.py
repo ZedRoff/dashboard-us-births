@@ -8,6 +8,7 @@ from views.local import local
 from views.glob import glob
 import views.globalStats as globalStats
 import views.education as education
+import views.age as age
 from callbacks import register_callbacks
 # Initialiser l'application Dash
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_callback_exceptions=True)
@@ -41,15 +42,17 @@ def update_header(n_clicks_home, n_clicks_local, n_clicks_global):
 
 @app.callback(
         [Output('main_global', 'children')],
-        [Input('Education', 'n_clicks'), Input('Statistiques globales', 'n_clicks')]
+        [Input('Education', 'n_clicks'), Input('Global statistics', 'n_clicks'), Input('Age', 'n_clicks')]
 )
-def update_global(n_clicks_education, n_clicks_stats):
+def update_global(n_clicks_education, n_clicks_stats, n_clicks_age):
     ctx = callback_context 
     triggered_id = ctx.triggered[0]['prop_id'].split('.')[0]
     if triggered_id == 'Education':
         return [education.show()]
-    elif triggered_id == 'Statistiques globales':
+    elif triggered_id == 'Global statistics':
         return [globalStats.show()]
+    elif triggered_id == 'Age':
+        return [age.show()]
     return [globalStats.show()]
     
 

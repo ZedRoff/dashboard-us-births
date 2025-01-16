@@ -2,7 +2,7 @@ import pandas as pd
 import plotly.express as px
 
 # Charger le fichier CSV
-df = pd.read_csv('../data/us_births_2016_2021.csv')
+df = pd.read_csv('data/us_births_2016_2021.csv')
 
 def generate():
     # Définir les intervalles pour l'âge moyen des mères
@@ -54,7 +54,5 @@ def generate():
     )
 
     # Afficher le graphique
-    fig.show()
+    return fig
 
-# Appeler la fonction pour générer l'histogramme
-generate()

@@ -9,9 +9,12 @@ def glob():
     return html.Main([
        html.Div([
             html.Div([
-               sidebar_element("Statistiques globales"),
+               sidebar_element("Global statistics"),
                sidebar_element("Education"),
-               sidebar_element("Test 3")
+               sidebar_element("Age"),
+               sidebar_element("Genre"),
+               sidebar_element("Poids"),
+               sidebar_element("Naissances"),
             ], id="elements_sidebar")
 
        ], id="sidebar"), 
