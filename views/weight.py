@@ -14,4 +14,17 @@ def show():
     Returns:
         html.Div: The layout for the "Weight Data" page.
     """
-    return html.Div([dcc.Graph(id="test", figure=weight_glob.generate())])
+    return html.Div([ 
+        html.H2("Graphics about weight", className="graph_part_title"),
+        html.Div([
+                html.H3("⚖️👶 Distribution of average birth weight by gender (weighted)"),
+                dcc.Graph(
+                id="education-gender-graph", figure=weight_glob.generate()
+            ),
+                html.Div([
+                    html.I(className="fa-solid fa-info-circle"),
+                    html.P("test")
+                ], className="footer_graph")
+            ], className="graph_block")
+        
+        ], className="graphs_block")

@@ -26,7 +26,7 @@ def header(page):
                     html.H1("US Births", id="title_main"),
                 ],
                 className="element_header",
-                href="#",
+                href="/",
             ),
             html.Div(
                 [

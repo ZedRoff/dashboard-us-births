@@ -24,7 +24,6 @@ def generate():
     fig = px.box(
         birth_data,
         y=column_name,
-        title="Box Plot of Average Age of Mothers",
         labels={column_name: "Average Age of Mothers (years)"},  # Renommer l'axe Y
         color_discrete_sequence=["#0A3161"],  # Couleur personnalisée
     )

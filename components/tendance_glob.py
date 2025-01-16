@@ -26,7 +26,6 @@ def generate():
         births_per_year,
         x="Year",  # L'axe des abscisses représente l'année
         y="Number of Births",  # L'axe des ordonnées représente le nombre de naissances
-        title="Number of births per year",
         labels={"Number of Births": "Number of births", "Year": "Year"},
     )
 

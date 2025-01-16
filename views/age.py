@@ -17,8 +17,27 @@ def show():
     - One for global mother age data
     """
     return html.Div(
-        [
-            dcc.Graph(id="age_graph", figure=age_glob.generate()),
-            dcc.Graph(id="mother_age_graph", figure=mother_age_glob.generate()),
-        ]
+        [ html.H2("Graphics about age", className="graph_part_title"),
+         html.Div([
+                html.H3("👩‍🍼🔢📊 Breakdown of mothers' average age"),
+                dcc.Graph(
+                id="education-gender-graph", figure=age_glob.generate()
+            ),
+                html.Div([
+                    html.I(className="fa-solid fa-info-circle"),
+                    html.P("test")
+                ], className="footer_graph")
+            ], className="graph_block"),
+         html.Div([
+                html.H3("🎂 Box plot of average age of mothers"),
+                dcc.Graph(
+                id="education-gender-graph", figure=mother_age_glob.generate()
+            ),
+                html.Div([
+                    html.I(className="fa-solid fa-info-circle"),
+                    html.P("test")
+                ], className="footer_graph")
+            ], className="graph_block")
+          
+        ], className="graphs_block"
     )

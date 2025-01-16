@@ -51,7 +51,7 @@ def homepage():
                     ],
                     id="block_left",
                 ),
-                html.Img(src="./assets/image.png", id="image_main"),
+                html.Img(src="../assets/image.png", id="image_main"),
             ],
             id="block_main",
         ),

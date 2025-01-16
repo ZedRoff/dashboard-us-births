@@ -25,8 +25,7 @@ def generate():
         hole=0.5,
         names="Gender",  # Gender of the baby
         values="Number of Births",  # Number of births by gender
-        title="Distribution of births by sex for each year",
-        labels={"Number of Births": "Number of Births", "Gender": "Gender"},
+       labels={"Number of Births": "Number of Births", "Gender": "Gender"},
         facet_col="Year",  # Create a subplot for each year
         facet_col_wrap=3,  # Display 3 years per row
         color="Gender",  # Use the 'Gender' column to define the colors
@@ -46,7 +45,6 @@ def generate():
     fig.update_layout(
         height=800,  # Height for better readability
         width=1200,  # Width to ensure everything is visible
-        title="Distribution of births by sex for each year",
         showlegend=False,
     )
     return fig

@@ -32,7 +32,6 @@ def generate(file_path="data/us_births_2016_2021.csv"):
         x="Average Birth Weight (g)",  # L'axe X montre les poids moyens
         y="Weighted Birth Weight",  # L'axe Y montre les poids pondérés
         color="Gender",  # Colorier selon le genre
-        title="Distribution of Average Birth Weight by Gender (Weighted)",
         labels={
             "Average Birth Weight (g)": "Average Birth Weight (g)",
             "Weighted Birth Weight": "Weighted Total Birth Weight (g)",

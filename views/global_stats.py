@@ -41,6 +41,7 @@ def show():
     """
     return html.Div(
         [
+            html.H2("📊 Global statistics graphics", className="graph_part_title"),
             html.Div(
                 [
                     html.Div(

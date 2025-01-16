@@ -40,7 +40,6 @@ def generate():
 
     # Configure the appearance of the chart
     bar_chart.update_layout(
-        title="Average number of births by mother's level of education",
         xaxis_title="Education level code",
         yaxis_title="Average number of births",
         plot_bgcolor="#FFFFFF",

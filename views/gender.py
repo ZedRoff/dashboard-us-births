@@ -16,4 +16,16 @@ def show():
     Returns:
         html.Div: The layout containing the gender graph.
     """
-    return html.Div([dcc.Graph(id="gender-graph", figure=gender_glob.generate())])
+    return html.Div([ 
+        html.H2("Graphic about genders", className="graph_part_title"),
+        html.Div([
+                html.H3("📊👶 Distribution of births sex for each year"),
+                dcc.Graph(
+                id="education-gender-graph", figure=gender_glob.generate()
+            ),
+                html.Div([
+                    html.I(className="fa-solid fa-info-circle"),
+                    html.P("test")
+                ], className="footer_graph")
+            ], className="graph_block")
+    ], className="graphs_block")

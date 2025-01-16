@@ -186,7 +186,6 @@ def update_global(*_):
             If no specific button is triggered, the 'Global statistics'
             content is returned by default.
     """
-    print("test")
     ctx = callback_context
     triggered_id = ctx.triggered[0]["prop_id"].split(".")[0]
     corr = {
