@@ -19,7 +19,7 @@ def generate():
         labels={'x': 'Average Age of Mother (years)', 'y': 'Education Level of Mother'},
         text=mean,
     )
-    fig.update_traces(marker_color='#0A3161')
+    fig.update_traces(marker_color='#0A3161', marker=dict(line=dict(color='black', width=2)))  # Bordure noire autour des barres
 
 
     # Personnaliser la mise en page

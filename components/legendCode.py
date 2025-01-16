@@ -20,13 +20,17 @@ def generate():
                 values=["Code", "Education Level"],
                 fill_color='#0A3161',
                 align='center',
-                font=dict(size=14, color='white')
+                font=dict(size=14, color='white'),
+                line_color='black',  # Bordures noires pour les cellules
+                line_width=2  # Épaisseur des bordures
             ),
             cells=dict(
                 values=[df['Education Level Code'].unique(), education_levels],
                 fill_color=[["#B31942"] * len(education_levels), ["#B31942"] * len(education_levels)],
                 align='center',
-                font=dict(size=12, color="white")
+                font=dict(size=12, color="white"),
+                line_color='black',  # Bordures noires pour les cellules
+                line_width=2  # Épaisseur des bordures
             )
         )]
     )
