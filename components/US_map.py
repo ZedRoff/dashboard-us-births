@@ -94,14 +94,6 @@ app.layout = html.Div([
     dcc.Graph(id="map-plotly", style={"height": "600px", "margin-top": "20px"})
 ])
 
-# Callback pour mettre à jour la carte
-@app.callback(
-    Output("map-plotly", "figure"),
-    Input("year-dropdown", "value")
-)
-def update_plotly_map(year):
-    return create_plotly_map(year)
-
 # Exécuter l'application
 if __name__ == "__main__":
     app.run_server(debug=True)
