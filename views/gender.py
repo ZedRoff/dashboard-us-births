@@ -1,7 +1,19 @@
+"""
+This module defines the layout for the gender-related graph on the dashboard.
+It includes a graph showing gender data.
+"""
+
 from dash import html, dcc
-import components.genderGlob as genderGlob 
+from components import gender_glob
+
 
 def show():
-    return html.Div([
-        dcc.Graph(id="test", figure=genderGlob.generate())
-    ])
+    """
+    Returns the layout for the gender graph.
+
+    The graph displays gender-related data using data from the genderGlob component.
+
+    Returns:
+        html.Div: The layout containing the gender graph.
+    """
+    return html.Div([dcc.Graph(id="gender-graph", figure=gender_glob.generate())])

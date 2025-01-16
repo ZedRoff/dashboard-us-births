@@ -1,11 +1,27 @@
+"""
+This module defines the layout for the education-related graphs on the dashboard.
+It includes graphs for education by gender, education, and a legend.
+"""
+
 from dash import html, dcc
-import components.educationGenderGlob as educationGenderGlob
-import components.educationGlob as educationGlob
-import components.legendCode as legendCode
+
+from components import education_gender_glob, education_glob, legend_code
+
 
 def show():
-    return html.Div([
-        dcc.Graph(id="test", figure=educationGenderGlob.generate()),
-        dcc.Graph(id="test3", figure=legendCode.generate()),
-        dcc.Graph(id="test2", figure=educationGlob.generate())
-    ])
+    """
+    Returns the layout for the education-related graphs, including education by gender,
+    education, and a legend graph.
+
+    Returns:
+        html.Div: The layout with the three graphs.
+    """
+    return html.Div(
+        [
+            dcc.Graph(
+                id="education-gender-graph", figure=education_gender_glob.generate()
+            ),
+            dcc.Graph(id="legend-graph", figure=legend_code.generate()),
+            dcc.Graph(id="education-graph", figure=education_glob.generate()),
+        ]
+    )

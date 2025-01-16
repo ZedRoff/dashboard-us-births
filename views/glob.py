@@ -1,33 +1,68 @@
+"""
+This module defines the layout for the global statistics page in the dashboard.
+It includes the sidebar with different sections such as Global statistics, Education, etc.,
+and the main content displaying the global statistics.
+"""
+
 from dash import html
 import pandas as pd
-import views.globalStats as globalStats
-df = pd.read_csv('data/us_births_2016_2021.csv')
+from views import global_stats
+
+# Read the dataset
+df = pd.read_csv("data/us_births_2016_2021.csv")
 
 
 def glob():
-  
-    return html.Main([
-       html.Div([
-            html.Div([
-               sidebar_element("Global statistics"),
-               sidebar_element("Education"),
-               sidebar_element("Age"),
-               sidebar_element("Gender"),
-               sidebar_element("Weight"),
-               sidebar_element("Births"),
-            ], id="elements_sidebar")
+    """
+    Returns the layout for the global statistics page.
 
-       ], id="sidebar"), 
-       html.Div([
-           globalStats.show()
-       ], id="main_global")
-    ], id="container_global")
+    This function constructs the layout containing the sidebar with navigation options
+    and the main content area displaying the global statistics.
 
+    Returns:
+        html.Main: The layout for the global statistics page.
+    """
+    return html.Main(
+        [
+            html.Div(
+                [
+                    html.Div(
+                        [
+                            sidebar_element("Global statistics"),
+                            sidebar_element("Education"),
+                            sidebar_element("Age"),
+                            sidebar_element("Gender"),
+                            sidebar_element("Weight"),
+                            sidebar_element("Births"),
+                        ],
+                        id="elements_sidebar",
+                    )
+                ],
+                id="sidebar",
+            ),
+            html.Div([global_stats.show()], id="main_global"),
+        ],
+        id="container_global",
+    )
 
 
 def sidebar_element(title):
-    return  html.Div([
+    """
+    Generates a sidebar element for a given section title.
 
-                    html.P(title, className="element_sidebar_title"),
-                    html.I(className="fa-chevron-right fa-solid")
-                ], className="element_sidebar", id=title)
+    The sidebar element consists of a title and an icon indicating a collapsible section.
+
+    Parameters:
+        title (str): The title of the sidebar section.
+
+    Returns:
+        html.Div: A `Div` containing the sidebar section with title and icon.
+    """
+    return html.Div(
+        [
+            html.P(title, className="element_sidebar_title"),
+            html.I(className="fa-chevron-right fa-solid"),
+        ],
+        className="element_sidebar",
+        id=f"{title.replace(' ', '_').lower()}",  # More consistent ID
+    )
