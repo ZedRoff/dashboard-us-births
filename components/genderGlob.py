@@ -25,7 +25,8 @@ def generate():
 
     fig.update_traces(
     textinfo="percent+label",  # Affiche le pourcentage et le label dans les sections
-       textfont=dict(family="Arial", size=14, color="white", weight="bold") 
+       textfont=dict(family="Arial", size=14, color="white", weight="bold"),
+       marker=dict(line=dict(color='black', width=2)) 
     )
 
     # Ajuster l'apparence pour améliorer la lisibilité
