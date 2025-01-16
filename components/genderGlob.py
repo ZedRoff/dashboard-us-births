@@ -18,8 +18,8 @@ def generate():
         facet_col_wrap=3,  # Afficher 3 années par ligne
         color="Gender",  # Utiliser la colonne 'Gender' pour définir les couleurs
         color_discrete_map={
-            "M": "#3AABF6",  # Bleu pour les garçons
-            "F": "#F63AAE",  # Rose pour les filles
+            "M": "#0A3161",  # Bleu pour les garçons
+            "F": "#B31942",  # Rose pour les filles
         }
     )
 

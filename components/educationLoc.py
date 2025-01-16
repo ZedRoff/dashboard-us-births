@@ -34,7 +34,10 @@ fig.update_layout(
         showgrid=True,      # Activer les lignes de la grille
         gridcolor='lightgrey',  # Couleur des lignes de la grille
         gridwidth=1,        # Épaisseur des lignes de la grille
-        griddash='dash',    # Lignes de la grille en pointillés
+        griddash='dash', 
+           ticks="outside",
+            tickwidth=2,
+            tickcolor='black',   # Lignes de la grille en pointillés
     ),
     yaxis=dict(
         title='Education Level of Mother',

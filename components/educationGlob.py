@@ -32,12 +32,15 @@ def generate():
         showgrid=True,      # Activer les lignes de la grille
         gridcolor='lightgrey',  # Couleur des lignes de la grille
         gridwidth=1,        # Épaisseur des lignes de la grille
+        ticks="outside",
+        tickwidth=2,
+        tickcolor='black',
         griddash='dash',    # Lignes de la grille en pointillés
     ),
     yaxis=dict(
         title='Education Level of Mother',
         showline=True,
-        linecolor='black',  # Ligne de l'axe des Y
+        linecolor='black', # Ligne de l'axe des Y
         linewidth=2,        # Épaisseur de la ligne de l'axe des Y
     ),
     title_font_size=18,
