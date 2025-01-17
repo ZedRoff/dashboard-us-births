@@ -40,7 +40,7 @@ def generate(state_filter):
             text=grouped_data["Number of Births"],
             textposition="outside",  # Position text outside the bars
             marker={"color": "#0A3161", "line": {"color": "black", "width": 3}},
-            name=f"Average number of births - {state_filter}",
+            name=f"In {state_filter}",
         )
     )
 

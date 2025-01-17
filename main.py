@@ -2,7 +2,7 @@
 Dash web application for visualizing and interacting with US state data.
 """
 
-from dash import html, Output, Input, Dash, callback_context, dcc, no_update
+from dash import html, Output, Input, Dash, callback_context, dcc
 
 import dash_bootstrap_components as dbc
 
@@ -23,7 +23,6 @@ from components import (
     age_loc,
     education_gender_loc,
     education_loc,
-    gender_loc,
     heatmap_loc,
     histogramme_loc,
     mother_age_loc,
@@ -35,7 +34,7 @@ from components import (
 # Initialiser l'application Dash
 app = Dash(
     __name__,
-    external_stylesheets=[dbc.themes.BOOTSTRAP], 
+    external_stylesheets=[dbc.themes.BOOTSTRAP],
     suppress_callback_exceptions=True
 )
 
@@ -69,7 +68,7 @@ def update_current_location(click_data):
     """
     if click_data and click_data["points"][0]["location"]:
         return click_data["points"][0]["location"]
-    return no_update
+    return "Texas"
 
 
 @app.callback(
@@ -109,18 +108,89 @@ def payload(state):
     - list: A list of `dcc.Graph` components for different metrics based on the state.
     """
     return [
-        dcc.Graph(id="age_loc", figure=age_loc.generate(state)),
-        dcc.Graph(id="education_loc", figure=education_loc.generate(state)),
-        dcc.Graph(id="education_gender_loc", figure=education_gender_loc.generate(state)),
-        dcc.Graph(id="heatmap_loc", figure=heatmap_loc.generate(state)),
-        dcc.Graph(id="histogramme_loc", figure=histogramme_loc.generate(state)),
-        dcc.Graph(id="mother_age_loc", figure=mother_age_loc.generate(state)),
-        dcc.Graph(id="tendance_loc", figure=tendance_loc.generate(state)),
-        dcc.Graph(id="weight_loc", figure=weight_loc.generate(state)),
-        dcc.Graph(id="gender_loc", figure=gender_loc.generate(state)),
+        html.Div([
+            html.Div([
+                html.H3("👩‍👧📊 Breakdown of mothers' average age"),
+                dcc.Graph(
+                id="education-gender-graph", figure=age_loc.generate(state)
+            ),
+                html.Div([
+                    html.I(className="fa-solid fa-info-circle"),
+                    html.P("test")
+                ], className="footer_graph")
+            ], className="graph_block"),
+            html.Div([
+                html.H3("👶📅 Number of births per year"),
+                dcc.Graph(
+                id="education-gender-graph", figure=histogramme_loc.generate(state)
+            ),
+                html.Div([
+                    html.I(className="fa-solid fa-info-circle"),
+                    html.P("test")
+                ], className="footer_graph")
+            ], className="graph_block"),
+             html.Div([
+                html.H3("🎓👩‍👧 Average age of mothers grouped by education level"),
+                dcc.Graph(
+                id="education-gender-graph", figure=education_loc.generate(state)
+            ),
+                html.Div([
+                    html.I(className="fa-solid fa-info-circle"),
+                    html.P("test")
+                ], className="footer_graph")
+            ], className="graph_block"),
+              html.Div([
+                html.H3("⚖️📆 Heatmap of average birth weight by year"),
+                dcc.Graph(
+                id="education-gender-graph", figure=heatmap_loc.generate(state)
+            ),
+                html.Div([
+                    html.I(className="fa-solid fa-info-circle"),
+                    html.P("test")
+                ], className="footer_graph")
+            ], className="graph_block"),
+            html.Div([
+                html.H3("👶📅 Number of births per year"),
+                dcc.Graph(
+                id="education-gender-graph", figure=education_gender_loc.generate(state)
+            ),
+                html.Div([
+                    html.I(className="fa-solid fa-info-circle"),
+                    html.P("test")
+                ], className="footer_graph")
+            ], className="graph_block"),
+            html.Div([
+                html.H3("⚖️📆 Heatmap of average birth weight by year"),
+                dcc.Graph(
+                id="education-gender-graph", figure=mother_age_loc.generate(state)
+            ),
+                html.Div([
+                    html.I(className="fa-solid fa-info-circle"),
+                    html.P("test")
+                ], className="footer_graph")
+            ], className="graph_block"),
+            html.Div([
+                html.H3("👩‍👧🎁 Box plot of average age of mothers"),
+                dcc.Graph(
+                id="education-gender-graph", figure=tendance_loc.generate(state)
+            ),
+                html.Div([
+                    html.I(className="fa-solid fa-info-circle"),
+                    html.P("test")
+                ], className="footer_graph")
+            ], className="graph_block"),
+            html.Div([
+                html.H3("📈👶Tendency graph of births per year "),
+                dcc.Graph(
+                id="education-gender-graph", figure=weight_loc.generate(state)
+            ),
+                html.Div([
+                    html.I(className="fa-solid fa-info-circle"),
+                    html.P("test")
+                ], className="footer_graph")
+            ], className="graph_block")
+        ], className="graphs_block")
     ]
-
-
 @app.callback(
     [Output("header", "children"), Output("content", "children")],
     [

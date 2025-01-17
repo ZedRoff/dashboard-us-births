@@ -35,7 +35,12 @@ def local():
                 ],
                 id="map_part",
             ),
-            html.Div([], id="local_graphs"),
+            html.Div([
+                html.H2("Local Graphs", id="title_city"),
+                html.P("Scroll down to see more graphs"),
+                html.Div([], id="local_graphs")
+            ], id="container_right_local")
+            
         ],
         id="container_local",
     )

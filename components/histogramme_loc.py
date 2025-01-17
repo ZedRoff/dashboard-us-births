@@ -32,7 +32,7 @@ def generate(selected_state):
         x="Year",  # Use the 'Year' column for the X-axis
         y="Number of Births",  # Use the 'Number of Births' column for the Y-axis
         labels={"Year": "Year", "Number of Births": "Number of births"},
-        title=f"Number of births per year in {selected_state}",
+        title=f"In {selected_state}",
         text="Number of Births",  # Add value annotations
         color_discrete_sequence=["#0A3161"],  # Set the bar color
     )

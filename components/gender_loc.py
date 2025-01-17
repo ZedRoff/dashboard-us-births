@@ -37,7 +37,7 @@ def generate(selected_state):
         hole=0.5,
         names="Gender",  # Gender of the baby
         values="Number of Births",  # Number of births by gender
-        title=f"Breakdown of births by gender for each year ({selected_state})",
+        title=f"In {selected_state}",
         labels={"Number of Births": "Number of Births", "Gender": "Gender"},
         facet_col="Year",  # Create a subplot for each year
         facet_col_wrap=3,  # Display 3 years per row

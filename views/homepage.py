@@ -51,7 +51,13 @@ def homepage():
                     ],
                     id="block_left",
                 ),
-                html.Img(src="../assets/image.png", id="image_main"),
+                html.Video(
+        src='assets/test_video.mp4',  # Path to the video file (e.g., in the 'assets' folder)
+        controls=True,  # Adds play/pause, volume, and other controls
+        width=600,  # Set the width of the video player
+        height=400,  # Set the height of the video player
+        id="image_main"
+    ),
             ],
             id="block_main",
         ),

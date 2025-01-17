@@ -36,7 +36,7 @@ def generate(selected_state):
         heatmap_data,
         color_continuous_scale="Jet",  # Choose a color scale
         labels={"x": "Year", "y": "State", "color": "Average weight (grams)"},
-        title=f"Heatmap of Average Birth Weight by Year ({selected_state})",
+        title=f"In {selected_state}",
     )
 
     # Adjust heatmap appearance

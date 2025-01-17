@@ -38,7 +38,7 @@ def generate(state):
         x=mean.values,
         y=mean.index,
         orientation="h",
-        title=f"Average Age of Mothers in {state} Grouped by Education Level",
+        title=f"In {state}",
         labels={"x": "Average Age of Mother (years)", "y": "Education Level of Mother"},
         text=mean,
     )

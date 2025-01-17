@@ -41,7 +41,7 @@ def generate(selected_state):
         x=age_counts.index.astype(str),  # Age groups (x-axis)
         y=age_counts.values,  # Number of births (y-axis)
         labels={"x": "Age range of mothers", "y": "Number of births"},
-        title=f"Breakdown of mothers' average age: {selected_state}",
+        title=f"In {selected_state}",
         text=age_counts.values,  # Display number on bars
         color_discrete_sequence=["#0A3161"],  # Custom bar color
     )

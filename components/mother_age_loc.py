@@ -29,7 +29,7 @@ def generate(state):
         df_filtered,
         x="State",  # L'état comme catégorie sur l'axe X
         y="Average Age of Mother (years)",  # Âge moyen des mères
-        title=f"Box Plot of Average Age of Mothers in {state}",
+        title=f"In {state}",
         labels={
             "State": "State",
             "Average Age of Mother (years)": "Average Age of Mothers (years)",

@@ -35,7 +35,7 @@ def generate(selected_state):
         x="Average Birth Weight (g)",
         y="Weighted Birth Weight",  # Utiliser les poids pondérés pour l'axe Y
         color="Gender",
-        title=f"Weighted Distribution of Average Birth Weight by Gender in {selected_state}",
+        title=f"In {selected_state}",
         labels={
             "Average Birth Weight (g)": "Average weight of birth (g)",
             "Weighted Birth Weight": "Weighted Total Birth Weight (g)",
