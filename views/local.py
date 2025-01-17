@@ -36,8 +36,8 @@ def local():
                 id="map_part",
             ),
             html.Div([
-                html.H2("Local Graphs", id="title_city"),
-                html.P("Scroll down to see more graphs"),
+                html.H2("🌍 Local Graphs", id="title_city"),
+                html.P("The page features a set of interactive graphs that update based on the selected state. When the user clicks on a specific state, the graphs at the top of the page are immediately modified to reflect the data related to that state. This interaction allows users to personalize the graph view according to the information they wish to explore. Scroll down to see more graphs.", className="desc"),
                 html.Div([], id="local_graphs")
             ], id="container_right_local")
             

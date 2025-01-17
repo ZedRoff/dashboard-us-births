@@ -21,27 +21,28 @@ def homepage():
                     [
                         html.H2("US Births from 2016 to 2021", id="subtitle_main"),
                         html.P(
-                            """A minimalist dashboard developed for an 
-                            ESIEE course that showcases US births data""",
+                            """This minimalist dashboard, created for an ESIEE course, visualizes U.S. birth data.
+                                It offers interactive features, allowing users to explore data by region or state, 
+                                providing a clear and simple way to analyze birth distribution across the U.S.""",
                             id="description_main",
                         ),
                         html.Div(
                             [
                                 html.Div(
                                     [
-                                        html.I(className="fa-solid fa-flag icon_stat"),
-                                        html.H3("States", className="stat_title"),
-                                        html.P("51", className="stat_data"),
+                                        html.I(className="fa-solid fa-location-dot"),
+                                        html.H3("Graphs on local data", className="stat_title"),
+                                        html.P("9", className="stat_data"),
                                     ],
                                     className="stat_card",
                                 ),
                                 html.Div(
                                     [
                                         html.I(
-                                            className="fa-solid fa-chart-bar icon_stat"
+                                            className="fa-solid fa-earth-americas"
                                         ),
-                                        html.H3("Graphs", className="stat_title"),
-                                        html.P("15", className="stat_data"),
+                                        html.H3("Graphs on global data", className="stat_title"),
+                                        html.P("8", className="stat_data"),
                                     ],
                                     className="stat_card",
                                 ),

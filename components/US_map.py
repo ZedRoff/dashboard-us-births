@@ -86,7 +86,7 @@ def create_plotly_map(year):
 
     # Modifier la position de la légende
     fig.update_layout(
-        coloraxis_colorbar={"orientation": "h", "y": -0.3, "title": "Nombre de naissances"}
+        coloraxis_colorbar={"orientation": "h", "y": -0.3, "title": "Number of Births"}
     )
 
     # Ajuster les limites et l'apparence de la carte

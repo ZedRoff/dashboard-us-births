@@ -18,6 +18,7 @@ def show():
     """
     return html.Div([ 
         html.H2("Graphic about genders", className="graph_part_title"),
+        html.H1("This page features ring charts showing the distribution of births by gender (Male: M, Female: F) from 2016 to 2021.", className="desc"),
         html.Div([
                 html.H3("📊👶 Distribution of births sex for each year"),
                 dcc.Graph(

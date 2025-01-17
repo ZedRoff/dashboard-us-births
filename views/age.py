@@ -18,6 +18,7 @@ def show():
     """
     return html.Div(
         [ html.H2("Graphics about age", className="graph_part_title"),
+          html.H1("This page displays visualizations related to the distribution of mothers' ages and their birth statistics. It includes a breakdown of births by age range and a box plot of the average age of mothers, offering insights into the most common age groups for childbirth.", className="desc"),
          html.Div([
                 html.H3("👩‍🍼🔢📊 Breakdown of mothers' average age"),
                 dcc.Graph(

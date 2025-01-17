@@ -19,6 +19,7 @@ def show():
     return html.Div(
         [
             html.H2("Graphics about education", className="graph_part_title"),
+            html.H1("This page features visualizations that explore the relationship between a mother's education level and birth statistics. It includes data on the average number of births by education level and the average age of mothers grouped by their level of education.", className="desc"),
             html.Div([
                 html.H3("🧒 Average number of births by mother's level of education"),
                 dcc.Graph(

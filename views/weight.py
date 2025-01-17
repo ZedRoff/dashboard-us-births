@@ -16,6 +16,7 @@ def show():
     """
     return html.Div([ 
         html.H2("Graphics about weight", className="graph_part_title"),
+          html.H1("This page presents a histogram displaying the distribution of average birth weights by gender (girls in red, boys in blue).", className="desc"),
         html.Div([
                 html.H3("⚖️👶 Distribution of average birth weight by gender (weighted)"),
                 dcc.Graph(
