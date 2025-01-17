@@ -114,80 +114,48 @@ def payload(state):
                 dcc.Graph(
                 id="education-gender-graph", figure=age_loc.generate(state)
             ),
-                html.Div([
-                    html.I(className="fa-solid fa-info-circle"),
-                    html.P("test")
-                ], className="footer_graph")
             ], className="graph_block"),
             html.Div([
                 html.H3("👶📅 Number of births per year"),
                 dcc.Graph(
                 id="education-gender-graph", figure=histogramme_loc.generate(state)
             ),
-                html.Div([
-                    html.I(className="fa-solid fa-info-circle"),
-                    html.P("test")
-                ], className="footer_graph")
             ], className="graph_block"),
              html.Div([
                 html.H3("🎓👩‍👧 Average age of mothers grouped by education level"),
                 dcc.Graph(
                 id="education-gender-graph", figure=education_loc.generate(state)
             ),
-                html.Div([
-                    html.I(className="fa-solid fa-info-circle"),
-                    html.P("test")
-                ], className="footer_graph")
             ], className="graph_block"),
               html.Div([
                 html.H3("⚖️📆 Heatmap of average birth weight by year"),
                 dcc.Graph(
                 id="education-gender-graph", figure=heatmap_loc.generate(state)
             ),
-                html.Div([
-                    html.I(className="fa-solid fa-info-circle"),
-                    html.P("test")
-                ], className="footer_graph")
             ], className="graph_block"),
             html.Div([
                 html.H3("👶📅 Number of births per year"),
                 dcc.Graph(
                 id="education-gender-graph", figure=education_gender_loc.generate(state)
             ),
-                html.Div([
-                    html.I(className="fa-solid fa-info-circle"),
-                    html.P("test")
-                ], className="footer_graph")
             ], className="graph_block"),
             html.Div([
                 html.H3("⚖️📆 Heatmap of average birth weight by year"),
                 dcc.Graph(
                 id="education-gender-graph", figure=mother_age_loc.generate(state)
             ),
-                html.Div([
-                    html.I(className="fa-solid fa-info-circle"),
-                    html.P("test")
-                ], className="footer_graph")
             ], className="graph_block"),
             html.Div([
                 html.H3("👩‍👧🎁 Box plot of average age of mothers"),
                 dcc.Graph(
                 id="education-gender-graph", figure=tendance_loc.generate(state)
             ),
-                html.Div([
-                    html.I(className="fa-solid fa-info-circle"),
-                    html.P("test")
-                ], className="footer_graph")
             ], className="graph_block"),
             html.Div([
                 html.H3("📈👶Tendency graph of births per year "),
                 dcc.Graph(
                 id="education-gender-graph", figure=weight_loc.generate(state)
             ),
-                html.Div([
-                    html.I(className="fa-solid fa-info-circle"),
-                    html.P("test")
-                ], className="footer_graph")
             ], className="graph_block")
         ], className="graphs_block")
     ]
