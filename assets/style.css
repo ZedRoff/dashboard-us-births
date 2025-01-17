@@ -362,6 +362,7 @@ padding:25px;
     gap:50px;
     color:white;
     display:flex;
+    text-align: justify;
     justify-content:space-between;
     align-items:center;
 

@@ -27,7 +27,7 @@ def show():
                  dcc.Graph(id="legend-graph", figure=legend_code.generate()),
                 html.Div([
                     html.I(className="fa-solid fa-info-circle"),
-                    html.P("Mothers that are High School graduate or that have a GED completed overall give birth to more childrens than average. Thus, the higher the education background, the lower the amount of childrens from a mother")
+                    html.P("The data reveals a strong relationship between education levels and birth rates. Level 3 has the highest number of births, with 5,775,918. This could be because this education level represents a significant portion of the general population, many of whom are in age groups where starting families is common. Level 6 follows with 4,653,184 births, reflecting a group that balances career progression with family planning. Level 4 is close behind with 4,425,269 births, possibly indicating individuals who paused education to focus on family life. In contrast, lower education levels (1, 2) have fewer births, suggesting socioeconomic challenges or smaller population sizes within these groups. Higher education levels (7, 8) also show fewer births, with level 8 (doctorate) at just 627,705, likely due to delayed childbearing as individuals prioritize extended education and careers. This pattern highlights that intermediate education levels dominate births, potentially due to a combination of demographic prevalence and life circumstances conducive to starting families.")
                 ], className="footer_graph")
             ], className="graph_block"),
             
@@ -38,7 +38,7 @@ def show():
             ),
                 html.Div([
                     html.I(className="fa-solid fa-info-circle"),
-                    html.P("Doctorate or Professional Degree mothers tend to make childrens later than those who studied till their 9th through 12th. Thus, the higher the education background, the later they make the childrens.")
+                    html.P("This graph shows the relationship between a mother’s education level and her average age at childbirth. The trend is clear: the higher the education level, the older the mother is at childbirth. Mothers with a doctorate or professional degree have the highest average age at 33.7 years, followed by master’s degree at 32.8 years and bachelor’s degree at 31.2 years. Mothers with an associate degree average 29.9 years, while those with lower education levels, like high school graduates, average 26.5 years, and those without a diploma are the youngest at 25.1 years. This suggests that higher education delays parenthood, likely due to extended studies and career focus, while lower education levels are linked to earlier childbirth, possibly due to economic or cultural factors.")
                 ], className="footer_graph")
             ], className="graph_block")
             
