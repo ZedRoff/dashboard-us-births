@@ -5,7 +5,7 @@ and a graph for showing trends.
 """
 
 from dash import html, dcc
-from components import tendance_glob
+from src.components import tendance_glob
 
 
 def show() -> html.Div:

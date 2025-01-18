@@ -16,7 +16,7 @@ def generate() -> go.Figure :
         plotly.graph_objects.Figure: The generated interactive table.
     """
     # Charger les données
-    file_path = "data/us_births_2016_2021.csv"
+    file_path = "data/cleaned/us_births_2016_2021.csv"
     birth_data = pd.read_csv(file_path)
 
     # Créer une table descriptive

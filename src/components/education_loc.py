@@ -7,7 +7,7 @@ import pandas as pd
 import plotly.express as px
 
 
-def generate(state : str) -> px.Figure:
+def generate(state : str) -> px.bar:
     """
     Creates a bar chart showing the average age of mothers by education level 
     in the specified state.
@@ -19,7 +19,7 @@ def generate(state : str) -> px.Figure:
         plotly.graph_objects.Figure: The generated bar chart.
     """
     # Load data
-    file_path = "data/us_births_2016_2021.csv"
+    file_path = "data/cleaned/us_births_2016_2021.csv"
     birth_data = pd.read_csv(file_path)
 
     # Filter data for the specific state
@@ -31,7 +31,6 @@ def generate(state : str) -> px.Figure:
         .mean()
         .sort_values()
     )
-
     # Create a horizontal bar chart
     fig = px.bar(
         mean,
@@ -41,15 +40,13 @@ def generate(state : str) -> px.Figure:
         title=f"In {state}",
         labels={"x": "Average Age of Mother (years)", "y": "Education Level of Mother"},
         text=mean,
-        
     )
 
     # Customize bar colors
     fig.update_traces(
         marker_color="#0A3161",
-        textfont=dict(size=25, color="black"),  # Increase text size and set color
+        textfont={"size":25, "color":"black"},  # Increase text size and set color
         textposition="outside"  # Ensure text is inside the bars,
-        
     )
     # Customize layout
     fig.update_layout(
@@ -91,7 +88,6 @@ def generate(state : str) -> px.Figure:
             "family": "Arial",  # Font family for y-axis title
             "color": "black",  # Color of y-axis title
         },
-            
         },
         title_font_size=18,
         title_x=0.5,  # Center title

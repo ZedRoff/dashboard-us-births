@@ -4,7 +4,7 @@ It includes a graph showing gender data.
 """
 
 from dash import html, dcc
-from components import gender_glob
+from src.components import gender_glob
 
 
 def show() -> html.Div:

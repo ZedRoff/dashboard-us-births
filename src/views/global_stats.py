@@ -8,7 +8,7 @@ from dash import html
 import pandas as pd
 
 # Load the dataset
-df = pd.read_csv("data/us_births_2016_2021.csv")
+df = pd.read_csv("data/cleaned/us_births_2016_2021.csv")
 
 # Calculate various statistics
 max_weight_row = df.loc[df["Average Birth Weight (g)"].idxmax()]

@@ -8,7 +8,7 @@ import pandas as pd
 import plotly.express as px
 
 
-def generate() -> px.Figure :
+def generate() -> px.line :
     """
     Generates a line plot of the total number of births per year.
     
@@ -16,7 +16,7 @@ def generate() -> px.Figure :
         plotly.graph_objects.Figure: The generated line plot.
     """
     # Charger les données
-    birth_data = pd.read_csv("data/us_births_2016_2021.csv")
+    birth_data = pd.read_csv("data/cleaned/us_births_2016_2021.csv")
 
     # Calculer le nombre total de naissances par année
     births_per_year = birth_data.groupby("Year")["Number of Births"].sum().reset_index()

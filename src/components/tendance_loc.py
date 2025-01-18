@@ -7,7 +7,7 @@ import pandas as pd
 import plotly.express as px
 
 
-def generate(selected_state: str) -> px.Figure :
+def generate(selected_state: str) -> px.line :
     """
     Generates a line plot of the total number of births per year for the selected state.
     
@@ -18,7 +18,7 @@ def generate(selected_state: str) -> px.Figure :
         plotly.graph_objects.Figure: The generated line plot.
     """
     # Charger les données
-    birth_data = pd.read_csv("data/us_births_2016_2021.csv")
+    birth_data = pd.read_csv("data/cleaned/us_births_2016_2021.csv")
 
     # Filtrer les données pour l'état sélectionné
     state_data = birth_data[birth_data["State"] == selected_state]

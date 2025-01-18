@@ -6,10 +6,10 @@ and the main content displaying the global statistics.
 
 from dash import html
 import pandas as pd
-from views import global_stats
+from src.views import global_stats
 
 # Read the dataset
-df = pd.read_csv("data/us_births_2016_2021.csv")
+df = pd.read_csv("data/cleaned/us_births_2016_2021.csv")
 
 
 def glob() -> html.Main:

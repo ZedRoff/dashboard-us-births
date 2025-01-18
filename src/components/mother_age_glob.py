@@ -7,7 +7,7 @@ import pandas as pd
 import plotly.express as px
 
 
-def generate() -> px.Figure :
+def generate() -> px.box :
     """
     Generates a box plot of the average age of mothers using the US births data from 2016 to 2021.
     
@@ -15,7 +15,7 @@ def generate() -> px.Figure :
         plotly.graph_objects.Figure: The generated box plot.
     """
     # Charger les données
-    birth_data = pd.read_csv("data/us_births_2016_2021.csv")
+    birth_data = pd.read_csv("data/cleaned/us_births_2016_2021.csv")
 
     # Nom de la colonne pour le box plot
     column_name = "Average Age of Mother (years)"

@@ -5,10 +5,10 @@ using US births data (2016-2021).
 import pandas as pd
 import plotly.express as px
 
-df = pd.read_csv("data/us_births_2016_2021.csv")
+df = pd.read_csv("data/cleaned/us_births_2016_2021.csv")
 
 
-def generate() -> px.Figure :
+def generate() -> px.pie :
     """
     Creates a pie chart displaying the distribution of births by sex for each year.
     """

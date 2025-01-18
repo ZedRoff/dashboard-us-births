@@ -1,0 +1,2 @@
+def cleandata() -> None:
+    pass

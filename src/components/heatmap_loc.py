@@ -1,8 +1,13 @@
+"""
+Generates a heatmap showing the average birth weight by year
+using US births data (2016-2021).
+"""
+
 import pandas as pd
 import plotly.express as px
 
 
-def generate(selected_state: str) -> px.Figure :
+def generate(selected_state: str) -> px.imshow :
     """
     Creates a heatmap displaying the average birth weight by year for the specified state.
     
@@ -13,7 +18,7 @@ def generate(selected_state: str) -> px.Figure :
         plotly.graph_objects.Figure: The generated heatmap with a bottom color bar.
     """
     # Load the data from CSV
-    birth_data = pd.read_csv("data/us_births_2016_2021.csv")
+    birth_data = pd.read_csv("data/cleaned/us_births_2016_2021.csv")
 
     # Filter the data for the selected state
     df_state = birth_data[birth_data["State"] == selected_state]
@@ -36,20 +41,20 @@ def generate(selected_state: str) -> px.Figure :
 
     # Customize heatmap appearance and move the color bar to the bottom
     fig.update_layout(
-        height=800,  # Adjusted height  
+        height=800,  # Adjusted height
         xaxis={"tickangle": 45},  # Rotate x-axis labels (years)
         yaxis={"tickangle": 0},  # Rotate y-axis labels (state)
-        coloraxis_colorbar=dict(
-            title="Avg Weight (g)",  # Title for the legend
-            orientation="h",  # Horizontal orientation
-            x=0.5,  # Center the color bar horizontally
-            y=-0.2,  # Position it below the graph
-            ticks="outside",  # Place ticks outside the color bar
-            ticklen=5,  # Length of the ticks
-            tickcolor="black",  # Color of the ticks
-            len=0.75,  # Length of the color bar as a fraction of the graph width
-            thickness=20,  # Thickness of the color bar
-        ),
+        coloraxis_colorbar={
+    "title": "Avg Weight (g)",
+    "orientation": "h",
+    "x": 0.5,
+    "y": -0.2,
+    "ticks": "outside",
+    "ticklen": 5,
+    "tickcolor": "black",
+    "len": 0.75,
+    "thickness": 20
+},
     )
 
     # Return the figure

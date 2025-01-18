@@ -5,7 +5,7 @@ It includes graphs for education by gender, education, and a legend.
 
 from dash import html, dcc
 
-from components import education_gender_glob, education_glob, legend_code
+from src.components import education_gender_glob, education_glob, legend_code
 
 
 def show() -> html.Div:

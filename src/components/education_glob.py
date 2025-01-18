@@ -7,12 +7,12 @@ import pandas as pd
 import plotly.express as px
 
 
-def generate() -> px.Figure:
+def generate() -> px.bar:
     """
     Creates a bar chart showing the average age of mothers by education level.
     """
     # Load the data
-    file_path = "data/us_births_2016_2021.csv"
+    file_path = "data/cleaned/us_births_2016_2021.csv"
     birth_data = pd.read_csv(file_path)
 
     # Calculate the mean age of mothers by education level
@@ -28,7 +28,6 @@ def generate() -> px.Figure:
         x=mean.values,
         y=mean.index,
         orientation="h",
-      
         labels={"x": "Average Age of Mother (years)", "y": "Education Level of Mother"},
         text=mean,
     )

@@ -17,7 +17,7 @@ def generate() -> go.Figure:
     """
 
     # Load the data
-    file_path = "data/us_births_2016_2021.csv"
+    file_path = "data/cleaned/us_births_2016_2021.csv"
     birth_data = pd.read_csv(file_path)
     b_d = birth_data
     # Group the data by education level and sum the number of births

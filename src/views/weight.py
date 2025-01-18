@@ -4,7 +4,7 @@ It displays a graph related to weight data using the `weightGlob` component.
 """
 
 from dash import html, dcc
-from components import weight_glob
+from src.components import weight_glob
 
 def show() -> html.Div :
     """

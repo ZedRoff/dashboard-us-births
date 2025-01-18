@@ -6,7 +6,7 @@ import pandas as pd
 import plotly.express as px
 
 
-def generate(selected_state: str) -> px.Figure:
+def generate(selected_state: str) -> px.histogram:
     """
     Generates a weighted histogram of the distribution of average birth weights by gender
     for a given state from the US birth dataset.
@@ -18,7 +18,7 @@ def generate(selected_state: str) -> px.Figure:
         plotly.graph_objects.Figure: A Plotly figure object containing the weighted histogram.
     """
     # Charger les données
-    file_path = "data/us_births_2016_2021.csv"
+    file_path = "data/cleaned/us_births_2016_2021.csv"
     birth_data = pd.read_csv(file_path)
 
     # Créer une nouvelle colonne pondérée (poids multiplié par le nombre de naissances)

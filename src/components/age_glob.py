@@ -7,10 +7,10 @@ import pandas as pd
 import plotly.express as px
 
 # Load the CSV file containing the US births data
-df = pd.read_csv("data/us_births_2016_2021.csv")
+df = pd.read_csv("data/cleaned/us_births_2016_2021.csv")
 
 
-def generate() -> px.Figure:
+def generate() -> px.bar:
     """
     Creates a bar chart showing the number of births for each age range of mothers.
     

@@ -1,12 +1,13 @@
 """
 Dash web application for visualizing and interacting with US state data.
 """
+from typing import Tuple, Optional
 
 from dash import html, Output, Input, Dash, callback_context, dcc
 import plotly.graph_objects as go
 import dash_bootstrap_components as dbc
 
-from views import (
+from src.views import (
     gender,
     global_stats,
     weight,
@@ -15,12 +16,12 @@ from views import (
     age,
 )
 import config
-from views.homepage import homepage
-from views.header import header
-from views.local import local
-from views.glob import glob
+from src.views.homepage import homepage
+from src.views.header import header
+from src.views.local import local
+from src.views.glob import glob
 
-from components import (
+from src.components import (
     age_loc,
     education_gender_loc,
     education_loc,
@@ -36,8 +37,7 @@ from components import (
 # Initialiser l'application Dash
 app = Dash(
     __name__,
-    external_stylesheets=[dbc.themes.BOOTSTRAP],
-    suppress_callback_exceptions=True
+    external_stylesheets=[dbc.themes.BOOTSTRAP]
 )
 
 # Layout de l'application avec la sidebar et contenu principal
@@ -186,7 +186,7 @@ def payload(state : str) -> list:
         Input("global", "n_clicks"),
     ]
 )
-def update_header(*_) -> tuple:
+def update_header(*_: Tuple[Optional[int], Optional[int], Optional[int]]) -> tuple:
     """
     Updates the header and content based on the triggered callback.
 
@@ -227,7 +227,7 @@ def update_header(*_) -> tuple:
         Input("births", "n_clicks"),
     ]
 )
-def update_global(*_) -> list:
+def update_global(*_: Tuple[Optional[int], Optional[int], Optional[int]]) -> list:
     """
     Updates the content displayed in the global section based on the triggered callback.
 
@@ -260,7 +260,7 @@ def update_global(*_) -> list:
 
 # Callback pour mettre à jour la carte
 @app.callback(Output("map-plotly", "figure"), Input("year-dropdown", "value"))
-def update_plotly_map(year: int) -> go.Figure :
+def update_plotly_map(year: int) -> go.Figure:
     """
     Updates the Plotly map based on the selected year.
 

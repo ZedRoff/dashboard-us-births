@@ -8,7 +8,7 @@ import pandas as pd
 import plotly.express as px
 
 
-def generate(state: str) -> px.Figure :
+def generate(state: str) -> px.box :
     """
     Generates a box plot of the average age of mothers for a selected state.
     
@@ -19,7 +19,7 @@ def generate(state: str) -> px.Figure :
         plotly.graph_objects.Figure: The generated box plot.
     """
     # Charger les données
-    birth_data = pd.read_csv("data/us_births_2016_2021.csv")
+    birth_data = pd.read_csv("data/cleaned/us_births_2016_2021.csv")
 
     # Filtrer les données pour l'état sélectionné
     df_filtered = birth_data[birth_data["State"] == state]

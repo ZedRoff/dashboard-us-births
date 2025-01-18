@@ -5,7 +5,7 @@ This module contains the logic for displaying global age and mother age graphs.
 """
 
 from dash import html, dcc
-from components import age_glob, mother_age_glob
+from src.components import age_glob, mother_age_glob
 
 
 def show() -> html.Div:

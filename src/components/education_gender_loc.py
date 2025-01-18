@@ -19,7 +19,7 @@ def generate(state_filter: str) -> go.Figure:
         plotly.graph_objects.Figure: The generated bar chart.
     """
     # Load the data
-    file_path = "data/us_births_2016_2021.csv"
+    file_path = "data/cleaned/us_births_2016_2021.csv"
     birth_data = pd.read_csv(file_path)
 
     # Filter the data for the selected state

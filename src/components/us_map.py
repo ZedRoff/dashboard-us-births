@@ -21,7 +21,7 @@ def create_plotly_map(year : int) -> go.Figure:
         plotly.graph_objects.Figure: The generated Plotly figure containing the map.
     """
     # Charger les données
-    birth_data = pd.read_csv("data/us_births_2016_2021.csv")
+    birth_data = pd.read_csv("data/cleaned/us_births_2016_2021.csv")
 
     # Charger le fichier GeoJSON
     geojson_file = "data/us-states.json"
