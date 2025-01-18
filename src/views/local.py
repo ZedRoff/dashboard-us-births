@@ -37,14 +37,21 @@ def local() -> html.Main:
             ),
             html.Div([
                 html.H2("🌍 Local Graphs", id="title_city"),
-                html.P("The page features a set of interactive graphs that update based on the selected state. When the user clicks on a specific state, the graphs at the top of the page are immediately modified to reflect the data related to that state. This interaction allows users to personalize the graph view according to the information they wish to explore.", className="desc"),
+                html.P('''The page features a set of interactive graphs
+                       that update based on the selected state.
+                       When the user clicks on a specific state,
+                       the graphs at the top of the page are 
+                       immediately modified to reflect the data
+                       related to that state. This interaction
+                       allows users to personalize the graph
+                       view according to the information they wish
+                       to explore.''', className="desc"),
                 html.Div([], id="local_graphs"),
                 html.Div([
                     html.I(className="fa-solid fa-sticky-note info_scroll_icon"),
                     html.P("Scroll down to see more graphs", id="info_scroll_data")
                 ], id="info_scroll_block")
             ], id="container_right_local")
-            
         ],
         id="container_local",
     )

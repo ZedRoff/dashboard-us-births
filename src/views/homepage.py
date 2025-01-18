@@ -14,6 +14,7 @@ def homepage() -> tuple[html.Main, html.Div]:
     Returns:
         tuple: A tuple containing the main content and the data source section.
     """
+    url = "https://www.kaggle.com/datasets/danbraswell/temporary-us-births/data"
     return (
         html.Main(
             [
@@ -21,9 +22,12 @@ def homepage() -> tuple[html.Main, html.Div]:
                     [
                         html.H2("US Births from 2016 to 2021", id="subtitle_main"),
                         html.P(
-                            """This minimalist dashboard, created for an ESIEE course, visualizes U.S. birth data.
-                                It offers interactive features, allowing users to explore data by region or state, 
-                                providing a clear and simple way to analyze birth distribution across the U.S.""",
+                            """This minimalist dashboard, created for an ESIEE course,
+                            visualizes U.S. birth data.
+                                It offers interactive features,
+                                allowing users to explore data by region or state,
+                                providing a clear and simple way
+                                to analyze birth distribution across the U.S.""",
                             id="description_main",
                         ),
                         html.Div(
@@ -53,10 +57,10 @@ def homepage() -> tuple[html.Main, html.Div]:
                     id="block_left",
                 ),
                 html.Video(
-        src='/video.mp4', 
-        controls=True, 
-        width=600,  
-        height=400, 
+        src='/video.mp4',
+        controls=True,
+        width=600,
+        height=400,
         id="image_main"
     ),
             ],
@@ -72,8 +76,10 @@ def homepage() -> tuple[html.Main, html.Div]:
                     ),
                     html.Div(
                         [
-                            html.A("Kaggle", className="source_button", target="_blank", href="https://www.kaggle.com/datasets/danbraswell/temporary-us-births/data"),
-                            
+                            html.A("Kaggle",
+                                   className="source_button",
+                                   target="_blank",
+                                   href=url),
                         ],
                         id="source_buttons",
                     ),
