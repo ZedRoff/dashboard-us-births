@@ -53,10 +53,10 @@ def homepage():
                     id="block_left",
                 ),
                 html.Video(
-        src='assets/2025-01-18 12-39-55.mp4',  # Path to the video file (e.g., in the 'assets' folder)
-        controls=True,  # Adds play/pause, volume, and other controls
-        width=600,  # Set the width of the video player
-        height=400,  # Set the height of the video player
+        src='/video.mp4', 
+        controls=True, 
+        width=600,  
+        height=400, 
         id="image_main"
     ),
             ],
@@ -72,7 +72,7 @@ def homepage():
                     ),
                     html.Div(
                         [
-                            html.A("Kaggle", className="source_button", target="_blank", href="https://kaggle.com/datasets/danbraswell/temporary-us-births/discussion/407750"),
+                            html.A("Kaggle", className="source_button", target="_blank", href="https://www.kaggle.com/datasets/danbraswell/temporary-us-births/data"),
                             
                         ],
                         id="source_buttons",

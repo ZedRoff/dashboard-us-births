@@ -1,0 +1,6 @@
+
+APP_NAME = "US Births Dashboard (2016-2021)"
+DEBUG = True
+PORT = 8000
+API_KEY_USERNAME = "amanghazanfar"
+API_KEY_KAGGLE = "bb4d2c3a19505a8d507506340d2d66bf"

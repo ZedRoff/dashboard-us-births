@@ -14,6 +14,7 @@ from views import (
     education,
     age,
 )
+import config
 from views.homepage import homepage
 from views.header import header
 from views.local import local
@@ -277,4 +278,4 @@ def update_plotly_map(year):
 
 # Exécution du serveur
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(debug=config.DEBUG)
