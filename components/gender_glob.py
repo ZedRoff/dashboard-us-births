@@ -8,7 +8,7 @@ import plotly.express as px
 df = pd.read_csv("data/us_births_2016_2021.csv")
 
 
-def generate():
+def generate() -> px.Figure :
     """
     Creates a pie chart displaying the distribution of births by sex for each year.
     """

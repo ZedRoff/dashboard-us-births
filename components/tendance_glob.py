@@ -8,7 +8,7 @@ import pandas as pd
 import plotly.express as px
 
 
-def generate():
+def generate() -> px.Figure :
     """
     Generates a line plot of the total number of births per year.
     

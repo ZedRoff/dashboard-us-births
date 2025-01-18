@@ -8,7 +8,7 @@ from dash import html, dcc
 from components import education_gender_glob, education_glob, legend_code
 
 
-def show():
+def show() -> html.Div:
     """
     Returns the layout for the education-related graphs, including education by gender,
     education, and a legend graph.

@@ -7,7 +7,7 @@ import pandas as pd
 import plotly.graph_objects as go
 
 
-def generate(state_filter):
+def generate(state_filter: str) -> go.Figure:
     """
     Creates a bar chart showing the average number of births for each education level in
     the specified state based on the US births data from 2016 to 2021.

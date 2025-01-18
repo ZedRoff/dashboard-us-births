@@ -7,7 +7,7 @@ and a theme switch icon.
 from dash import html
 
 
-def header(page):
+def header(page: str) -> html.Header:
     """
     Generates the header section of the webpage with navigation and theme switch.
 

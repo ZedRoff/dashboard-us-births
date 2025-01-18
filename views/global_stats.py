@@ -28,7 +28,7 @@ min_age = min_age_row["Average Age of Mother (years)"]
 state_with_min_age = min_age_row["State"]
 
 
-def show():
+def show() -> html.Div:
     """
     Returns the global statistics layout as HTML components for the dashboard.
 

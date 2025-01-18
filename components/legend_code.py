@@ -7,7 +7,7 @@ import pandas as pd
 import plotly.graph_objects as go
 
 
-def generate():
+def generate() -> go.Figure :
     """
     Creates an interactive table showing the education 
     levels of mothers and their corresponding codes.

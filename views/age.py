@@ -8,7 +8,7 @@ from dash import html, dcc
 from components import age_glob, mother_age_glob
 
 
-def show():
+def show() -> html.Div:
     """
     Returns the layout for displaying global age and mother age graphs.
 

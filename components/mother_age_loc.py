@@ -8,7 +8,7 @@ import pandas as pd
 import plotly.express as px
 
 
-def generate(state):
+def generate(state: str) -> px.Figure :
     """
     Generates a box plot of the average age of mothers for a selected state.
     

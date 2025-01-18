@@ -12,7 +12,7 @@ from views import global_stats
 df = pd.read_csv("data/us_births_2016_2021.csv")
 
 
-def glob():
+def glob() -> html.Main:
     """
     Returns the layout for the global statistics page.
 

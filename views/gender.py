@@ -7,7 +7,7 @@ from dash import html, dcc
 from components import gender_glob
 
 
-def show():
+def show() -> html.Div:
     """
     Returns the layout for the gender graph.
 

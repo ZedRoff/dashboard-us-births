@@ -7,7 +7,7 @@ import pandas as pd
 import plotly.express as px
 
 
-def generate(selected_state):
+def generate(selected_state: str) -> px.Figure :
     """
     Generates a line plot of the total number of births per year for the selected state.
     

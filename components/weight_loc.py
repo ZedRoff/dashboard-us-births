@@ -6,7 +6,7 @@ import pandas as pd
 import plotly.express as px
 
 
-def generate(selected_state):
+def generate(selected_state: str) -> px.Figure:
     """
     Generates a weighted histogram of the distribution of average birth weights by gender
     for a given state from the US birth dataset.

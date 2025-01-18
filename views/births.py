@@ -8,7 +8,7 @@ from dash import html, dcc
 from components import tendance_glob
 
 
-def show():
+def show() -> html.Div:
     """
     Returns the layout for the US Births map dashboard with a year dropdown,
     map, and trend graph.

@@ -7,7 +7,7 @@ import pandas as pd
 import plotly.express as px
 
 
-def generate(state):
+def generate(state : str) -> px.Figure:
     """
     Creates a bar chart showing the average age of mothers by education level 
     in the specified state.

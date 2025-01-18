@@ -6,7 +6,7 @@ It displays a map for US births from 2016 to 2021 along with a dropdown to filte
 from dash import html, dcc
 
 
-def local():
+def local() -> html.Main:
     """
     Generates the layout for the "Local Data" page, which includes a dropdown to select 
     the year and a map that visualizes US births data from 2016 to 2021.

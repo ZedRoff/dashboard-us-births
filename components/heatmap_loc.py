@@ -2,7 +2,7 @@ import pandas as pd
 import plotly.express as px
 
 
-def generate(selected_state):
+def generate(selected_state: str) -> px.Figure :
     """
     Creates a heatmap displaying the average birth weight by year for the specified state.
     

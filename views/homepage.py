@@ -6,7 +6,7 @@ a brief introduction to the project, key statistics, and links to the data sourc
 from dash import html
 
 
-def homepage():
+def homepage() -> tuple[html.Main, html.Div]:
     """
     Generates the homepage layout for the dashboard, including a description of the project,
     key statistics, and links to the data sources.

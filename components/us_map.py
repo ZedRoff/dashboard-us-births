@@ -9,7 +9,7 @@ import plotly.graph_objects as go
 from shapely.geometry import shape
 
 
-def create_plotly_map(year):
+def create_plotly_map(year : int) -> go.Figure:
     """
     Creates a choropleth map of US birth data for a given year, with annotations
     for state abbreviations and a color scale representing the number of births.

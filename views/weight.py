@@ -6,7 +6,7 @@ It displays a graph related to weight data using the `weightGlob` component.
 from dash import html, dcc
 from components import weight_glob
 
-def show():
+def show() -> html.Div :
     """
     Generates the layout for the "Weight Data" page, which includes a graph 
     visualizing weight data from the `weightGlob` component.

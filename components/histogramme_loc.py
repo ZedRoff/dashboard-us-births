@@ -7,7 +7,7 @@ import pandas as pd
 import plotly.express as px
 
 # Load data
-def generate(selected_state):
+def generate(selected_state: str) -> px.Figure:
     """
     Creates a bar chart displaying the number of births per year for the specified state.
     
