@@ -57,7 +57,7 @@ def homepage() -> tuple[html.Main, html.Div]:
                     id="block_left",
                 ),
                 html.Video(
-        src='/video.mp4',
+        src='assets/video.mp4',
         controls=True,
         width=600,
         height=400,
