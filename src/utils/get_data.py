@@ -26,11 +26,12 @@ def getdata() -> None:
                     '../../data/raw/us_births_2016_2021.zip',
                     '-C',
                     '../../data/raw'], check=True)
-    subprocess.run(['rm',
-                    '-rf',
-                    '../../data/raw/us_births_2016_2021.zip'], check=True)
     subprocess.run(['cp',
                     '../../data/raw/us_births_2016_2021.csv',
                     '../../data/cleaned'], check=True)
+    
+    subprocess.run(['rm',
+                    '-rf',
+                    '../../data/raw/us_births_2016_2021.zip'], check=True)
 if __name__ == "__main__":
     getdata()
