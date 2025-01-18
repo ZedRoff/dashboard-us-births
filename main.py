@@ -3,7 +3,7 @@ Dash web application for visualizing and interacting with US state data.
 """
 
 from dash import html, Output, Input, Dash, callback_context, dcc
-
+import plotly.graph_objects as go
 import dash_bootstrap_components as dbc
 
 from views import (
@@ -58,7 +58,7 @@ app.layout = html.Div(
     ),  # Update the Store with the current location
     Input("map-plotly", "clickData")
 )
-def update_current_location(click_data):
+def update_current_location(click_data: dict) -> str:
     """
     Returns the location from a map click event or `dash.no_update` if no location is clicked.
 
@@ -79,7 +79,7 @@ def update_current_location(click_data):
         "current-location-store", "data"
     )
 )
-def display_click_data(current_location):
+def display_click_data(current_location: str) -> list:
     """
     Returns the payload of graphs based on the provided location.
 
@@ -97,7 +97,7 @@ def display_click_data(current_location):
     return payload(current_location)
 
 
-def payload(state):
+def payload(state : str) -> list:
     """
     Generates a list of graphs based on the provided state.
 
@@ -186,7 +186,7 @@ def payload(state):
         Input("global", "n_clicks"),
     ]
 )
-def update_header(*_):
+def update_header(*_) -> tuple:
     """
     Updates the header and content based on the triggered callback.
 
@@ -227,7 +227,7 @@ def update_header(*_):
         Input("births", "n_clicks"),
     ]
 )
-def update_global(*_):
+def update_global(*_) -> list:
     """
     Updates the content displayed in the global section based on the triggered callback.
 
@@ -260,7 +260,7 @@ def update_global(*_):
 
 # Callback pour mettre à jour la carte
 @app.callback(Output("map-plotly", "figure"), Input("year-dropdown", "value"))
-def update_plotly_map(year):
+def update_plotly_map(year: int) -> go.Figure :
     """
     Updates the Plotly map based on the selected year.
 
