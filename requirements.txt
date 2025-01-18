@@ -1,5 +1,3 @@
-# Create the requirements.txt content
-requirements = """
 pandas==2.2.3
 plotly==5.24.1
 shapely==2.0.6
@@ -10,5 +8,4 @@ dash-bootstrap-components==1.7.1
 dash-table==5.0.0
 urllib3==1.26.20
 numpy==1.26.4
-"""
 
