@@ -41,11 +41,16 @@ def generate(state):
         title=f"In {state}",
         labels={"x": "Average Age of Mother (years)", "y": "Education Level of Mother"},
         text=mean,
+        
     )
 
     # Customize bar colors
-    fig.update_traces(marker_color="#0A3161")
-
+    fig.update_traces(
+        marker_color="#0A3161",
+        textfont=dict(size=25, color="black"),  # Increase text size and set color
+        textposition="outside"  # Ensure text is inside the bars,
+        
+    )
     # Customize layout
     fig.update_layout(
         xaxis={
@@ -60,12 +65,33 @@ def generate(state):
             "ticks": "outside",  # Ticks outside the axis
             "tickwidth": 2,
             "tickcolor": "black",  # Tick color
+             "tickfont": {
+            "size": 10,  # Size of x-axis tick labels
+            "family": "Arial",  # Font family for x-axis tick labels
+            "color": "black"  # Color of x-axis tick labels
+        },
+        "titlefont": {
+            "size": 12,  # Font size for x-axis title
+            "family": "Arial",  # Font family for y-axis title
+            "color": "black",  # Color of x-axis title
+        },
         },
         yaxis={
             "title": "Education Level of Mother",
             "showline": True,
             "linecolor": "black",  # Y-axis line color
             "linewidth": 2,  # Y-axis line thickness
+            "tickfont": {
+            "size": 10,  # Size of y-axis tick labels
+            "family": "Arial",  # Font family for y-axis tick labels
+            "color": "black"  # Color of y-axis tick labels
+        },
+        "titlefont": {
+            "size": 12,  # Font size for y-axis title
+            "family": "Arial",  # Font family for y-axis title
+            "color": "black",  # Color of y-axis title
+        },
+            
         },
         title_font_size=18,
         title_x=0.5,  # Center title

@@ -86,6 +86,8 @@ z-index:99;
     justify-content:center;
     flex-direction:column;
     gap: 25px;
+    flex:1;
+    padding:25px;
 }
 #block_main {
     display:flex;
@@ -94,10 +96,12 @@ z-index:99;
     flex-flow: row wrap;
     gap: 50px;
     margin-top:150px;
+    padding:25px;
 }
 #image_main {
     width: 500px;
     border-radius: 15px;
+    flex:1;
 }
 
 #stats_main {
@@ -207,7 +211,7 @@ z-index:99;
     display:flex;
     justify-content:space-evenly;
     align-items:center;
-    margin-top:100px;
+    margin-top:50px;
     gap:50px;
     padding:50px;
 }
@@ -227,7 +231,8 @@ z-index:99;
     height: 500px;
     scrollbar-width: auto; /* For Firefox */
     scrollbar-color: auto; /* For Firefox */
-    overflow-x: hidden;
+   
+    
     overflow-y: auto;
     align-self:flex-start;
  
@@ -395,5 +400,61 @@ padding:25px;
 }
 .desc {
     text-align: justify;
-    font-size: 20px;;
+    font-size: 20px;
+    border-left:2px solid #3c8bf9;
+    padding-left:10px;
+}
+
+#info_scroll_block {
+    background: #ff5733;
+    padding:15px;
+    border-radius:10px;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+}
+.info_scroll_icon {
+    font-size:20px;
+    color:white;
+}
+#info_scroll_data {
+    color:white;
+    font-weight:bold;
+}
+.legend_block {
+    
+    padding:15px;
+    margin-bottom:15px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    margin-left:auto;
+
+}
+.legend_list {
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+.legend_title {
+    font-weight:bold;
+}
+.legend_element {
+    display:flex;
+    justify-content: space-between;
+    padding:5px;
+    border:1px solid black;
+    width:200px;
+}
+.square-1 {
+    width:25px;
+    height:25px;
+    background: #0A3161;
+
+}
+.square-2 {
+    width:25px;
+    height:25px;
+    background: #B31942;
+    
 }

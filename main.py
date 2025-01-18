@@ -29,6 +29,7 @@ from components import (
     tendance_loc,
     weight_loc,
     us_map,
+    legend_code
 )
 
 # Initialiser l'application Dash
@@ -126,6 +127,9 @@ def payload(state):
                 dcc.Graph(
                 id="education-gender-graph", figure=education_loc.generate(state)
             ),
+                html.H3("Legend"),
+                dcc.Graph(id="legend-graph", figure=legend_code.generate()),
+                
             ], className="graph_block"),
               html.Div([
                 html.H3("⚖️📆 Heatmap of average birth weight by year"),
@@ -140,22 +144,35 @@ def payload(state):
             ),
             ], className="graph_block"),
             html.Div([
-                html.H3("⚖️📆 Heatmap of average birth weight by year"),
+                html.H3("👩‍👧🎁 Box plot of average age of mothers"),
                 dcc.Graph(
                 id="education-gender-graph", figure=mother_age_loc.generate(state)
             ),
             ], className="graph_block"),
             html.Div([
-                html.H3("👩‍👧🎁 Box plot of average age of mothers"),
+                html.H3("📈👶 Tendency graph of births per year "),
                 dcc.Graph(
                 id="education-gender-graph", figure=tendance_loc.generate(state)
             ),
             ], className="graph_block"),
             html.Div([
-                html.H3("📈👶Tendency graph of births per year "),
+                html.H3("⚖️♂️♀️ Weighted distribution of average birth weight by gender"),
                 dcc.Graph(
                 id="education-gender-graph", figure=weight_loc.generate(state)
             ),
+                html.Div([
+                    html.H3("Legend", className="legend_title"),
+                    html.Ul([
+                        html.Li([
+                            html.Div("", className="square-1"),
+                            html.P("Male")
+                        ], className="legend_element"),
+                          html.Li([
+                            html.Div("", className="square-2"),
+                            html.P("Female")
+                        ], className="legend_element")
+                    ], className="legend_list")
+                ], className="legend_block")
             ], className="graph_block")
         ], className="graphs_block")
     ]

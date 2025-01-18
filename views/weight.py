@@ -23,6 +23,19 @@ def show():
                 id="education-gender-graph", figure=weight_glob.generate()
             ),
                 html.Div([
+                    html.H3("Legend", className="legend_title"),
+                    html.Ul([
+                        html.Li([
+                            html.Div("", className="square-1"),
+                            html.P("Male")
+                        ], className="legend_element"),
+                          html.Li([
+                            html.Div("", className="square-2"),
+                            html.P("Female")
+                        ], className="legend_element")
+                    ], className="legend_list")
+                ], className="legend_block"),
+                html.Div([
                     html.I(className="fa-solid fa-info-circle"),
                     html.P("The histogram, divided into red bars (girls) and blue bars (boys), shows the distribution of average birth weights, ranging from 2600 g to 3600 g, with a concentration between 3200 g and 3400 g. Boys tend to dominate the higher weight ranges, especially between 3400 g and 3600 g, while girls are more common in the 3000 g to 3400 g range. The highest total weighted birth weight is centered around 3200 g to 3300 g, with girls having slightly higher weights in this range. Overall, most births have an average weight between 3100 g and 3400 g, with boys being slightly heavier in the higher weight ranges.")
                 ], className="footer_graph")
