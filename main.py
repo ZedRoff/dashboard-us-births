@@ -111,6 +111,7 @@ def payload(state):
     """
     return [
         html.Div([
+            html.Title("US Births Dashboard | Home"),
             html.Div([
                 html.H3("👩‍👧📊 Breakdown of mothers' average age"),
                 dcc.Graph(
