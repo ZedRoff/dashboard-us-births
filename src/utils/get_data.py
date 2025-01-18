@@ -6,7 +6,7 @@ import shutil
 def getdata() -> None:
     """
     Downloads a dataset, extracts it, and organizes the files into 'raw' and 'cleaned' folders.
-    This script works on macOS, Linux, and Windows.
+   
 
     Returns:
         None
