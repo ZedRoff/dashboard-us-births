@@ -46,7 +46,7 @@ def glob() -> html.Main:
     )
 
 
-def sidebar_element(title):
+def sidebar_element(title : str) -> html.Div:
     """
     Generates a sidebar element for a given section title.
 
