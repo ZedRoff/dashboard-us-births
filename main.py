@@ -37,7 +37,8 @@ from src.components import (
 # Initialiser l'application Dash
 app = Dash(
     __name__,
-    external_stylesheets=[dbc.themes.BOOTSTRAP]
+    external_stylesheets=[dbc.themes.BOOTSTRAP],
+    suppress_callback_exceptions=True
 )
 
 # Layout de l'application avec la sidebar et contenu principal
